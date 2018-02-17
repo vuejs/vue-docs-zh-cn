@@ -1,61 +1,61 @@
-## Static Asset Handling
+## 处理静态资源
 
-- [Relative Path Imports](#relative-path-imports)
-  - [URL Transform Rules](#url-transform-rules)
-- [The `public` Folder](#the-public-folder)
-  - [When to use the `public` folder](#when-to-use-the-public-folder)
+- [相对路径导入](#相对路径导入)
+  - [URL 转换规则](#url-转换规则)
+- [`public` 文件夹](#public-文件夹)
+  - [何时使用 `public` 文件夹](#何时使用-public-文件夹)
 
-### Relative Path Imports
+### 相对路径导入
 
-When you reference a static asset using relative path inside JavaScript, CSS or `*.vue` files, the asset will be included into webpack's dependency graph. During this compilation process, all asset URLs such as `<img src="...">`, `background: url(...)` and CSS `@import` are **resolved as module dependencies**.
+当你在 JavaScript、CSS 或 `*.vue` 文件中使用相对路径引用一个静态资源时，该资源将会被包含进入 webpack 的依赖图中。在其编译过程中，所有诸如 `<img src="...">`、`background: url(...)` 和 CSS `@import` 的资源 URL **都会被解析为一个模块依赖**。
 
-For example, `url(./image.png)` will be translated into `require('./image.png')`, and
+例如，`url(./image.png)` 会被翻译为 `require('./image.png')`，而：
 
 ``` html
 <img src="../image.png">
 ```
 
-will be compiled into:
+将会被编译到：
 
 ``` js
 createElement('img', { attrs: { src: require('../image.png') }})
 ```
 
-Internally, we use `file-loader` to determine the final file location with version hashes and correct public base paths, and use `url-loader` to conditionally inline assets that are smaller than 10kb, reducing the amount of HTTP requests.
+在其内部，我们通过 `file-loader` 用哈希版本和正确的公共基础路径来决定最终的文件路径，再用 `url-loader` 将小于 10kb 的资源有条件的内联，以减少 HTTP 请求的数量。
 
-#### URL Transform Rules
+#### URL 转换规则
 
-- If the URL is an absolute path (e.g. `/images/foo.png`), it will be preserved as-is.
+- 如果 URL 是一个绝对路径 (例如 `/images/foo.png`)，它将会被保留为原有的样子。
 
-- If the URL starts with `.`, it's interpreted as a relative module request and resolved based on the folder structure on your file system.
+- 如果 URL 以 `.` 开头，它会作为一个相对模块请求被解释且基于你的文件系统中的目录结构进行解析。
 
-- If the URL starts with `~`, anything after it is interpreted as a module request. This means you can even reference assets inside node modules:
+- 如果 URL 以 `~` 开头，其后的任何内容都会作为一个模块请求被解释。这意味着你甚至可以引用 node 模块中的资源：
 
   ``` html
   <img src="~/some-npm-package/foo.png">
   ```
 
-- If the URL starts with `@`, it's also interpreted as a module request. This is useful because Vue CLI by default aliases `@` to `<projectRoot>/src`.
+- 如果 URL 以 `@` 开头，它也会作为一个模块请求被解释。它的用处在于 Vue CLI 默认会设置一个指向 `<projectRoot>/src` 的别名 `@`。
 
-### The `public` Folder
+### `public` 文件夹
 
-Any static assets placed in the `public` folder will simply be copied and not go through webpack. You need to reference to them using absolute paths.
+任何放置在 `public` 文件夹的静态资源都会被简单的复制，而不经过 webpack。你需要通过绝对路径来引用它们。
 
-Note we recommended importing assets as part of your module dependency graph so that they will go through webpack with the following benefits:
+注意我们推荐将资源作为你的模块依赖图的一部分导入，这样它们会通过 webpack 的处理并获得如下好处：
 
-- Scripts and stylesheets get minified and bundled together to avoid extra network requests.
-- Missing files cause compilation errors instead of 404 errors for your users.
-- Result filenames include content hashes so you don’t need to worry about browsers caching their old versions.
+- 脚本和样式表会被压缩且打包在一起，从而避免额外的网络请求。
+- 文件丢失会直接在编译时报错，而不是到了用户端才产生 404 错误。
+- 最终生成的文件名包含了内容哈希，因此你不必担心浏览器会缓存它们到老版本。
 
-The `public` directory is provided as an **escape hatch**, and when you reference it via absolute path, you need to take into account where your app will be deployed. If your app is not deployed at the root of a domain, you will need to prefix your URLs with the base path:
+`public` 目录提供的是一个**逃生通道**，当你通过绝对路径引用它时，你需要留意你的应用将会部署到哪里。如果你的应用没有部署在域名的根部，那么你需要为你的 URL 配置基础路径前缀：
 
-- In `public/index.html`, you need to prefix the link with `<%= webpackConfig.output.publicPath %>`:
+- 在 `public/index.html` 中，你需要通过 `<%= webpackConfig.output.publicPath %>` 设置链接前缀：
 
   ``` html
   <link rel="shortcut icon" href="<%= webpackConfig.output.publicPath %>favicon.ico">
   ```
 
-- In templates, you will need to first pass the base URL to your component:
+- 在模板中，你首先需要向你的组件传入基础 URL：
 
   ``` js
   data () {
@@ -71,8 +71,8 @@ The `public` directory is provided as an **escape hatch**, and when you referenc
   <img :src="`${baseUrl}my-image.png`">
   ```
 
-#### When to use the `public` folder
+#### 何时使用 `public` 文件夹
 
-- You need a file with a specific name in the build output.
-- You have thousands of images and need to dynamically reference their paths.
-- Some library may be incompatible with Webpack and you have no other option but to include it as a `<script>` tag.
+- 你需要在构建输出中指定一个文件的名字。
+- 你有上千个图片，需要动态引用它们的路径。
+- 有些库可能和 webpack 不兼容，这时你除了将其用一个独立的 `<script>` 标签引入没有别的选择。

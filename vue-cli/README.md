@@ -65,7 +65,7 @@ vue create my-project
 
 - 放入 `public` 目录并通过绝对路径引用。这些资源会被简单的复制过去，并不通过 webpack。
 
-请在[处理静态资源](./cli-service.md)查阅更多细节。
+请在[处理静态资源](./assets.md)查阅更多细节。
 
 ### 环境变量和模式
 
@@ -73,7 +73,7 @@ vue create my-project
 
 Vue CLI 通过模式切换和 `.env` 文件为指定不同环境变量做了全面的支持。
 
-请在[环境变量和模式](./cli-service.md)查阅更多细节。
+请在[环境变量和模式](./env.md)查阅更多细节。
 
 ## 配置
 
@@ -161,4 +161,4 @@ TypeScript 可以通过 `tsconfig.json` 进行配置。
 ## 开发
 
 - [参与贡献指南](https://github.com/vuejs/vue-cli/blob/dev/.github/CONTRIBUTING.md)
-- [插件开发指南](https://github.com/vuejs/vue-cli/blob/dev/docs/plugin-dev.md)
+- [插件开发指南](./plugin-dev.md)

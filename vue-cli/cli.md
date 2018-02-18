@@ -156,7 +156,7 @@ vue invoke eslint --config airbnb --lintOn save
 
 ### 拉取 `vue-cli@2.x` 模板 (遗留)
 
-因为使用了 `vue-cli@2.x` 相同的 `vue` 命令，所以 `@vue/cli` 会将其复写。如果你仍然需要遗留的 `vue init` 功能，你可以安装一个全局的桥：
+因为使用了 `vue-cli@2.x` 相同的 `vue` 可执行程序，所以 `@vue/cli` 会将其复写。如果你仍然需要遗留的 `vue init` 功能，你可以安装一个全局的桥：
 
 ``` sh
 npm install -g @vue/cli-init

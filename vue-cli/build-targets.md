@@ -1,17 +1,17 @@
-## Build Targets
+## 构建目标
 
-### App
+### 应用
 
-App mode is the default mode. In this mode:
+应用模式是默认的模式。在这个模式中：
 
-- `index.html` with asset and resource hints injection
-- vendor libraries split into a separate chunk for better caching
-- static assets under 10kb are inlined into JavaScript
-- static assets in `public` are copied into output directory
+- `index.html` 会带有注入的资源和资源暗示
+- 供应的库会被分到一个独立包以便更好的缓存
+- 小于 10kb 的静态资源会被内联在 JavaScript 中
+- `public` 中的静态资源会被复制到输出目录中
 
-### Library
+### 库
 
-You can build a single entry as a library using
+你可以通过下面的命令对一个单独的入口构建为一个库：
 
 ```
 vue-cli-service build --target lib --name myLib [entry]
@@ -26,25 +26,25 @@ dist/myLib.common.js     20.57 kb                 10.09 kb
 dist/myLib.css           0.33 kb                  0.23 kb
 ```
 
-The entry can be either a `.js` or a `.vue` file. If no entry is specified, `src/App.vue` will be used.
+这个入口可以是一个 `.js` 或一个 `.vue` 文件。如果没有指定入口，则会使用 `src/App.vue`。
 
-A lib build outputs:
+构建一个库会输出：
 
-- `dist/myLib.common.js`: A CommonJS bundle for consuming via bundlers (unfortunately, webpack currently does not support ES modules output format for bundles yet)
+- `dist/myLib.common.js`：一个用来被打包器消费的 CommonJS 包 (不幸的是，webpack 目前还并没有支持 ES modules 输出格式的包)
 
-- `dist/myLib.umd.js`: A UMD bundle for consuming directly in browsers or with AMD loaders
+- `dist/myLib.umd.js`：一个用来直接在浏览器中或通过 AMD loader 消费的 UMD 包
 
-- `dist/myLib.umd.min.js`: Minified version of the UMD build.
+- `dist/myLib.umd.min.js`：压缩后的 UMD 构建版本
 
-- `dist/myLib.css`: Extracted CSS file (can be forced into inlined by setting `css: { extract: false }` in `vue.config.js`)
+- `dist/myLib.css`：提取出来的 CSS 文件 (可以通过在 `vue.config.js` 中设置 `css: { extract: false }` 强制内联)
 
-**In lib mode, Vue is externalized.** This means the bundle will not bundle Vue even if your code imports Vue. If the lib is used via a bundler, it will attempt to load Vue as a dependency through the bundler; otherwise, it falls back to a global `Vue` variable.
+**在库模式中，Vue 是外置的。**这意味着包中不会有 Vue，甚至你在代码中导入了 Vue。如果这个库会通过一个打包器使用，它将会在打包器内尝试作为一个依赖加载 Vue；否则就会回退到一个全局的 `Vue` 变量。
 
 ### Web Component
 
-> [Compatibility](https://github.com/vuejs/vue-web-component-wrapper#compatibility)
+> [兼容性](https://github.com/vuejs/vue-web-component-wrapper#compatibility)
 
-You can build a single entry as a library using
+你可以通过下面的命令对一个单独的入口构建为一个库：
 
 ```
 vue-cli-service build --target wc --name my-element [entry]

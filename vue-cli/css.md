@@ -2,30 +2,30 @@
 
 - [PostCSS](#postcss)
 - [CSS Modules](#css-modules)
-- [Pre-Processors](#pre-processors)
-- [Passing Options to Pre-Processor Loaders](#passing-options-to-pre-processor-loaders)
+- [预处理器](#预处理器)
+- [向预处理器 Loader 传递选项](#向预处理器-loader-传递选项)
 
 ### PostCSS
 
-Vue CLI uses PostCSS internally, and enables [autoprefixer](https://github.com/postcss/autoprefixer) by default. You can configure PostCSS via `.postcssrc` or any config source supported by [postcss-load-config](https://github.com/michael-ciniawsky/postcss-load-config).
+Vue CLI 内部使用了 PostCSS，并默认开启了 [autoprefixer](https://github.com/postcss/autoprefixer)。你可以通过 `.postcssrc` 或任何 [postcss-load-config](https://github.com/michael-ciniawsky/postcss-load-config) 支持的配置源来配置 PostCSS。
 
 ### CSS Modules
 
-You can [use CSS Modules in `*.vue` files](https://vue-loader.vuejs.org/en/features/css-modules.html) out of the box with `<style module>`.
+你可以通过 `<style module>` 以开箱即用的方式[在 `*.vue` 文件中使用 CSS Modules](https://vue-loader.vuejs.org/zh-cn/features/css-modules.html)。
 
-As for standalone style files, any files ending with `.module.(css|sass|scss|less|styl|stylus)` will be processed as CSS modules.
+任何名字以 `.module.(css|sass|scss|less|styl|stylus)` 结尾的文件都会作为独立的样式文件被 CSS Modules 处理。
 
-If you wish to be able to use CSS modules without the `.module` postfix, you can set `css: { modules: true }` in `vue.config.js`. This option does not affect `*.vue` files.
+如果你希望能够不带 `.module` 后缀使用 CSS Modules，你可以在 `vue.config.js` 中设置 `css: { modules: true }`。该选项不会影响 `*.vue` 文件。
 
-### Pre-Processors
+### 预处理器
 
-You can select pre-processors (Sass/Less/Stylus) when creating the project. If you did not do so, you can also just manually install the corresponding webpack loaders. The loaders are pre-configured and will automatically be picked up. For example, to add Sass to an existing project, simply run:
+你可以在创建项目的时候选择预处理器 (Sass/Less/Stylus)。如果当时没有选好，你也可以手动安装相应的 webpack loader。这些 loader 会被预配置好且被自动采集。例如，想要在一个已有的项目中添加 Sass，只需运行：
 
 ``` sh
 npm install -D sass-loader node-sass
 ```
 
-Then you can import `.scss` files, or use it in `*.vue` files with:
+然后你就可以导入 `.scss` 文件，或在 `*.vue` 文件中这样使用它：
 
 ``` vue
 <style lang="scss">
@@ -33,9 +33,9 @@ $color = red;
 </style>
 ```
 
-### Passing Options to Pre-Processor Loaders
+### 向预处理器 Loader 传递选项
 
-Sometimes you may want to pass options to the pre-processor's webpack loader. You can do that using the `css.loaderOptions` option in `vue.config.js`. For example, to pass some shared global variables to all your Sass styles:
+有的时候你想要向 webpack 的预处理器 loader 传递选项。你可以使用 `vue.config.js` 中的 `css.loaderOptions` 选项。比如你可以这样向所有 Sass 样式传入共享的全局变量：
 
 ``` js
 // vue.config.js

@@ -111,7 +111,7 @@ Options:
 #### 缓存和并行模式
 
 - `cache-loader` 会为 Babel/TypeScript 的编译默认开启。
-- `thread-loader` 会为 Babel/TypeScript 的编译在多核情况下默认开启。
+- `thread-loader` 会为 Babel/TypeScript 的编译在多核机器下默认开启。
 
 #### 构建为一个库或 Web Component
 

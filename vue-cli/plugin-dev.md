@@ -22,7 +22,7 @@
 
 ### Service
 
-[Service][service-class] 是调用 `vue-cli-service <command> [...args]` 时创建的类。负责管理 webpack 内部配置、暴露服务和构建项目的命令等。
+[Service][service-class] 是调用 `vue-cli-service <command> [...args]` 时创建的类。负责管理内部的 webpack 配置、暴露服务和构建项目的命令等。
 
 ### CLI 插件
 
@@ -202,29 +202,29 @@ module.exports = (api, options, rootOptions) => {
 
 #### 内建插件的提示符
 
-Only built-in plugins have the ability to customize the initial prompts when creating a new project, and the prompt modules are located [inside the `@vue/cli` package][prompt-modules].
+只有内建插件可以定制创建新项目时的初始化提示符，且这些提示符模块放置在 [`@vue/cli` 包的内部][prompt-modules]。
 
-A prompt module should export a function that receives a [PromptModuleAPI][prompt-api] instance. The prompts are presented using [inquirer](https://github.com/SBoudrias/Inquirer.js) under the hood:
+一个提示符模块应该导出一个函数，这个函数接收一个 [PromptModuleAPI][prompt-api] 实例。这些提示符的底层使用 [inquirer](https://github.com/SBoudrias/Inquirer.js) 进行展示：
 
 ``` js
 module.exports = api => {
-  // a feature object should be a valid inquirer choice object
+  // 一个特性对象应该是一个有效的 inquirer 选择对象
   cli.injectFeature({
     name: 'Some great feature',
     value: 'my-feature'
   })
 
-  // injectPrompt expects a valid inquirer prompt object
+  // injectPrompt 的预期是一个有效的 inquirer 提示符对象
   cli.injectPrompt({
     name: 'someFlag',
-    // make sure your prompt only shows up if user has picked your feature
+    // 确认你的提示符只在用户已经选取了你的特性的时候展示
     when: answers => answers.features.include('my-feature'),
     message: 'Do you want to turn on flag foo?',
     type: 'confirm'
   })
 
-  // when all prompts are done, inject your plugin into the options that
-  // will be passed on to Generators
+  // 当所有的提示符都完成之后，将你的插件注入到
+  // 即将传递给 Generator 的选项中
   cli.onPromptComplete((answers, options) => {
     if (answers.features.includes('my-feature')) {
       options.plugins['vue-cli-plugin-my-feature'] = {
@@ -237,23 +237,23 @@ module.exports = api => {
 
 #### 第三方插件的提示符
 
-3rd party plugins are typically installed manually after a project is already created, and the user will initialize the plugin by calling `vue invoke`. If the plugin contains a `prompts.js` in its root directory, it will be used during invocation. The file should export an array of [Questions](https://github.com/SBoudrias/Inquirer.js#question) that will be handled by Inquirer.js. The resolved answers object will be passed to the plugin's generator as options.
+第三方插件通常会在一个项目创建完毕后被手动安装，且用户将会通过调用 `vue invoke` 来初始化这个插件。如果这个插件在其根目录包含一个 `prompt.js`，那么它将会在被调用的时候使用。这个文件应该导出一个用于 Inquirer.js 的[问题](https://github.com/SBoudrias/Inquirer.js#question)的数组。这些被解析的答案对象会作为选项被传递给插件的 generator。
 
-Alternatively, the user can skip the prompts and directly initialize the plugin by passing options via the command line, e.g.:
+或者，用户可以通过在命令行传递选项来忽略提示符直接初始化插件，比如：
 
 ``` sh
 vue invoke my-plugin --mode awesome
 ```
 
-## Note on Development of Core Plugins
+## 开发核心插件的注意事项
 
-> This section only applies if you are working on a built-in plugin inside this very repository.
+> 这个章节只用于你在本仓库中的内建插件内部的工作。
 
-A plugin with a generator that injects additional dependencies other than packages in this repo (e.g. `chai` is injected by `@vue/cli-plugin-unit-mocha/generator/index.js`) should have those dependencies listed in its own `devDependencies` field. This ensures that:
+一个带有为本仓库注入额外依赖的 generator 的插件 (比如 `chai` 会通过 `@vue/cli-plugin-unit-mocha/generator/index.js` 被注入) 应该将这些依赖列入其自身的 `devDependencies` 字段。这会确保：
 
-1. the package always exist in this repo's root `node_modules` so that we don't have to reinstall them on every test.
+1. 这个包始终存在于该仓库的根 `node_modules` 中，因此我们不必在每次测试的时候重新安装它们。
 
-2. `yarn.lock` stays consistent so that CI can better use it for inferring caching behavior.
+2. `yarn.lock` 会保持其一致性，因此 CI 程序可以更好的利用缓存。
 
 [creator-class]: https://github.com/vuejs/vue-cli/tree/dev/packages/@vue/cli/lib/Creator.js
 [service-class]: https://github.com/vuejs/vue-cli/tree/dev/packages/@vue/cli-service/lib/Service.js

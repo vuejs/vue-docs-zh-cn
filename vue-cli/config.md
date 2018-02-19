@@ -25,7 +25,7 @@ module.exports = {
   // 查阅 https://cn.vuejs.org/v2/guide/installation.html#运行时-编译器-vs-只包含运行时
   compiler: false,
 
-  // 调整 webpack 内部配置。
+  // 调整内部的 webpack 配置。
   // 查阅 https://github.com/jinjiang/vue-doc-zh-cn/vue-cli/webpack.md
   chainWebpack: () => {},
   configureWebpack: () => {},

@@ -118,7 +118,7 @@ module.exports = {
 
 Babel 可以通过 `.babelrc` 或 `package.json` 中的 `babel` 字段进行配置。
 
-所有 Vue CLI 应用使用了 `@vue/babel-preset-app`，它包含了 `babel-preset-env`、JSX 支持和为最小化包体积做的优化配置。请在[其文档](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/babel-preset-app)查阅相关细节和预设选项。
+所有 Vue CLI 应用使用了 `@vue/babel-preset-app`，它包含了 `babel-preset-env`、JSX 支持和为最小化包体积做的优化配置。请在[其文档 (英)](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/babel-preset-app)查阅相关细节和预设选项。
 
 ### CSS
 
@@ -130,35 +130,35 @@ Vue CLI 项目自身支持了 [PostCSS](http://postcss.org/)、[CSS Modules](htt
 
 ESLint 可以通过 `.eslintrc` 或 `package.json` 文件中的 `eslintConfig` 字段进行配置。
 
-请在 [@vue/cli-plugin-eslint](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint) 查阅更多细节。
+请在 [@vue/cli-plugin-eslint (英)](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint) 查阅更多细节。
 
 ### TypeScript
 
 TypeScript 可以通过 `tsconfig.json` 进行配置。
 
-请在 [@vue/cli-plugin-typescript](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript) 查阅更多细节。
+请在 [@vue/cli-plugin-typescript (英)](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript) 查阅更多细节。
 
 ### Unit Testing
 
 - #### Jest
 
-  请在 [@vue/cli-plugin-unit-jest](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest) 查阅更多细节。
+  请在 [@vue/cli-plugin-unit-jest (英)](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest) 查阅更多细节。
 
 - #### Mocha (via `mocha-webpack`)
 
-  请在 [@vue/cli-plugin-unit-mocha](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-mocha) 查阅更多细节。
+  请在 [@vue/cli-plugin-unit-mocha (英)](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-mocha) 查阅更多细节。
 
 ### E2E Testing
 
 - #### Cypress
 
-  请在 [@vue/cli-plugin-e2e-cypress](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-e2e-cypress) 查阅更多细节。
+  请在 [@vue/cli-plugin-e2e-cypress (英)](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-e2e-cypress) 查阅更多细节。
 
 - #### Nightwatch
 
-  请在 [@vue/cli-plugin-e2e-nightwatch](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-e2e-nightwatch) 查阅更多细节。
+  请在 [@vue/cli-plugin-e2e-nightwatch (英)](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-e2e-nightwatch) 查阅更多细节。
 
 ## 开发
 
-- [参与贡献指南](https://github.com/vuejs/vue-cli/blob/dev/.github/CONTRIBUTING.md)
+- [参与贡献指南 (英)](https://github.com/vuejs/vue-cli/blob/dev/.github/CONTRIBUTING.md)
 - [插件开发指南](./plugin-dev.md)

@@ -1,37 +1,37 @@
 # @vue/web-component-wrapper [![CircleCI](https://circleci.com/gh/vuejs/vue-web-component-wrapper.svg?style=shield)](https://circleci.com/gh/vuejs/vue-web-component-wrapper)
 
-> Wrap and register a Vue component as a custom element.
+> 将一个 Vue 组件包裹并注册为一个自定义元素。
 
-## Compatibility
+## 兼容性
 
-**[Requires ES2015 classes](https://caniuse.com/es6-class). IE11 and below not supported.**
+**[需要 ES2015 classes](https://caniuse.com/es6-class)。不支持 IE11 及其以下版本。**
 
-- **If targeting browsers that natively support ES2015, but not native Web Components:**
+- **如果目标浏览器原生支持 ES2015 但不原生支持 Web Components：**
 
-  You will also need the [Shady DOM + Custom Elements polyfill](https://github.com/webcomponents/webcomponentsjs/blob/master/webcomponents-sd-ce.js).
+  你还需要 [Shady DOM + 自定义元素的 polyfill](https://github.com/webcomponents/webcomponentsjs/blob/master/webcomponents-sd-ce.js).
 
-  See caniuse.com for support on [Custom Elements v1](https://caniuse.com/#feat=custom-elementsv1) and [Shadow DOM v1](https://caniuse.com/#feat=shadowdomv1).
+  请到 caniuse.com 查阅 [Custom Elements v1](https://caniuse.com/#feat=custom-elementsv1) 和 [Shadow DOM v1](https://caniuse.com/#feat=shadowdomv1) 的支持情况。
 
-- **Note on CSS Encapsulation When Using the Shady DOM polyfill**
+- **注意在使用 Shady DOM polyfill 封装 CSS 时**
 
-  It's recommended to use [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html) instead of `<style scoped>` in your `*.vue` files if you intend to use the Shady DOM polyfill, because it does not offer real style encapsulation like Shadow DOM does, so external stylesheets may affect your components if not using hashed class names.
+  如果你打算使用 Shady DOM polyfill，我们推荐在你的 `*.vue` 文件中使用 [CSS Modules](https://vue-loader.vuejs.org/en/features/css-modules.html) 而不是 `<style scoped>`，因为它不会提供像 Shadow DOM 一样真正的样式封装，所以如果不使用哈希后的 class 名，外部的样式表可能会影响到你的组件。
 
-- **If targeting browsers that does not support ES2015:**
+- **如果目标浏览器不支持 ES2015：**
 
-  You might want to reconsider since you'll be better off not using Web Components in this case.
+  你可能得重新考虑一下了，因为在这种情况下，最好不要使用 Web Components。
 
-## Usage
+## 使用
 
-- **`dist/vue-wc-wrapper.js`**: This file is in ES modules format. It's the default export for bundlers, and can be used in browsers with `<script type="module">`.
+- **`dist/vue-wc-wrapper.js`**：这个文件是 ES modules 格式的。是包的默认导出，可以在浏览器中以 `<script type="module">` 的方式使用。
 
-- **`dist/vue-wc-wrapper.global.js`**: This is for old school `<script>` includes in browsers that do not support `<script type="module">` yet (exposes `wrapVueWebComponent` global).
+- **`dist/vue-wc-wrapper.global.js`**：这是在还不支持 `<script type="module">` 的浏览器中使用的旧版本的 `<script>` (暴露全局变量 `wrapVueWebComponent`)。
 
 ``` js
 import Vue from 'vue'
 import wrap from '@vue/web-component-wrapper'
 
 const Component = {
-  // any component options
+  // 任何组件选项
 }
 
 const CustomElement = wrap(Vue, Component)
@@ -39,7 +39,7 @@ const CustomElement = wrap(Vue, Component)
 window.customElements.define('my-element', CustomElement)
 ```
 
-It works with async components as well - you can pass an async component factory function that returns a Promise, and the function will only be called when an instance of the custom element is created on the page:
+它可以和异步组件一起工作——你可以传递一个返回 Promise 的异步组件工程函数，这个函数只会在页面上第一个该自定义元素实例被创建的时候调用。
 
 ``` js
 const CustomElement = wrap(Vue, () => import(`MyComponent.vue`))
@@ -47,50 +47,50 @@ const CustomElement = wrap(Vue, () => import(`MyComponent.vue`))
 window.customElements.define('my-element', CustomElement)
 ```
 
-## Interface Proxying Details
+## 接口代理细节
 
-### Props
+### 属性
 
-- All `props` declared in the Vue component are exposed on the custom element as its properties. Kebab-case props are converted to camelCase properties, similar to how they are converted in Vue.
+- 该 Vue 组件中所有的 `props` 声明会作为其属性暴露在自定义元素上。Kebab-case 的 prop 会转换为 camelCase 属性，与其在 Vue 内的转换方式相似。
 
-- Setting properties on the custom element updates the props passed to the inner Vue component.
+- 在自定义元素上设置属性 (property) 会将专递给内部 Vue 组件相应的 prop 更新。
 
-- Setting attributes on the custom element updates corresponding declared props. Attributes are mapped to kebab-case. For example, a prop named `someProp` will have a corresponding attribute named `some-prop`.
+- 在自定义元素上设置特性 (attribute) 会更新相应声明的 prop。特性会匹配为 kebab-case。例如，一个名为 `someProp` 的 prop 会拥有一个相应的特性名 `some-prop`。
 
-- Attributes that map to props declared with `type: Boolean` are auto-casted into boolean values in the following rules:
+- 以 `type: Boolean` 声明的 prop 相匹配的特性，会以下列规则自动转换为布尔值：
 
-  - `""` or same value as attribute name: -> `true`
+  - `""` 或和特性名相同的值：-> `true`
 
   - `"true"` -> `true`
 
   - `"false"` -> `false`
 
-- Attributes that map to props declared with `type: Number` are auto-casted into numbers if the value is a parsable number.
+- 以 `type: Number` 声明的 prop 相匹配的特性，如果其值可以解析为数字，则会自动转换为数字。
 
-### Events
+### 事件
 
-Custom events emitted on the inner Vue component are dispatched on the custom element as a `CustomEvent`. Additional arguments passed to `$emit` will be exposed as an Array as `event.detail`.
+在内部 Vue 组件触发的自定义事件会 `CustomEvent` 以发送到自定义元素。额外传入 `$emit` 的参数会暴露为一个 `event.detail` 数组。
 
-### Slots
+### 插槽
 
-Slots work the same way as expected, including named slots. They also update when changed (using `MutationObserver`).
+插槽会同你预期的方式工作，包括具名插槽。它们同样会在被改变的时候更新 (通过 `MutationObserver`)。
 
-Scoped slots however, are not supported as they are a Vue specific concept.
+但是我们不支持作用域插槽，因为它是 Vue 特有的概念。
 
-### Lifecycle
+### 生命周期
 
-When the custom element is removed from the document, the Vue component behaves just as if it's inside a `<keep-alive>` and its `deactivated` hook will be called. When it's inserted again, the `activated` hook will be called.
+当我们从文档中移除该自定义元素的时候，Vue 组件表现为像在一个 `<keep-alive>` 中同时其 `deactivated` 钩子会被调用。当它被重新插入回文档时，其 `activated` 钩子会被调用。
 
-If you wish to destroy the inner component, you'd have to do that explicitly:
+如果你希望销毁内部的文档，你需要显性的执行：
 
 ``` js
 myElement.vueComponent.$destroy()
 ```
 
-## Acknowledgments
+## 致谢
 
-Special thanks to the prior work by @karol-f in [vue-custom-element](https://github.com/karol-f/vue-custom-element).
+特别感谢 @karol-f 早些时候为 [vue-custom-element](https://github.com/karol-f/vue-custom-element) 所做的工作！
 
-## License
+## 协议
 
 MIT

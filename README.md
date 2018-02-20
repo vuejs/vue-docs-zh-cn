@@ -20,6 +20,7 @@
 * [@vue/cli-init](./vue-cli-init/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-init/README.md)
 * [@vue/cli-service-global](./vue-cli-service-global/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-service-global/README.md)
 * [@vue/babel-preset-app](./vue-babel-preset-app/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/babel-preset-app/README.md)
+* [@vue/cli-plugin-unit-jest](./vue-cli-plugin-unit-jest/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-unit-jest/README.md)
 
 ## 欢迎参与贡献
 

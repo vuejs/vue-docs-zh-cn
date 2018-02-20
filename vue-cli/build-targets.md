@@ -42,7 +42,7 @@ dist/myLib.css           0.33 kb                  0.23 kb
 
 ### Web Component
 
-> [兼容性 (英)](https://github.com/vuejs/vue-web-component-wrapper#compatibility)
+> [兼容性](../vue-web-component-wrapper/README.md#兼容性)
 
 你可以通过下面的命令对一个单独的入口构建为一个库：
 
@@ -50,7 +50,7 @@ dist/myLib.css           0.33 kb                  0.23 kb
 vue-cli-service build --target wc --name my-element [entry]
 ```
 
-这将会产生一个单独的 JavaScript 文件 (及其压缩后的版本) 将所有的东西都内联起来。当这个脚本被引入网页时，会注册自定义组件 `<my-element>`，其使用 `@vue/web-component-wrapper` 包裹了目标的 Vue 组件。这个包裹器会自动代理属性、特性、事件和插槽。请查阅 [`@vue/web-component-wrapper` 的文档 (英)](https://github.com/vuejs/vue-web-component-wrapper)了解更多细节。
+这将会产生一个单独的 JavaScript 文件 (及其压缩后的版本) 将所有的东西都内联起来。当这个脚本被引入网页时，会注册自定义组件 `<my-element>`，其使用 `@vue/web-component-wrapper` 包裹了目标的 Vue 组件。这个包裹器会自动代理属性、特性、事件和插槽。请查阅 [`@vue/web-component-wrapper` 的文档](../vue-web-component-wrapper/README.md)了解更多细节。
 
 **注意这个包依赖了在页面上全局可用的 `Vue`。**
 
@@ -76,7 +76,7 @@ vue-cli-service build --target wc --name foo 'src/components/*.vue'
 
 ### 异步 Web Component
 
-> [兼容性 (英)](https://github.com/vuejs/vue-web-component-wrapper#compatibility)
+> [兼容性](../vue-web-component-wrapper/README.md#兼容性)
 
 当指定多个 web component 作为目标时，这个包可能会变得非常大，并且用户可能只想使用你的包中注册的一部分组件。这时异步 web component 模式会生成一个分割代码的包，带一个只提供所有组件共享的运行时，并预先注册所有的自定义组件小入口文件。一个组件真正的实现只会在页面中用到自定义元素相应的一个实例时按需获取：
 

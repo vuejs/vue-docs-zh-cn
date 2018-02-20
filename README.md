@@ -15,7 +15,8 @@
 
 ### 集中放置在该仓库的文档
 
-* [Vue CLI](./vue-cli/) (翻译中)
+* [Vue CLI](./vue-cli/README.md) - [原版](https://github.com/vuejs/vue-cli/)
+* [@vue/web-component-wrapper](./vue-web-component-wrapper/README.md) - [原版](https://github.com/vuejs/vue-web-component-wrapper/)
 
 ## 欢迎参与贡献
 

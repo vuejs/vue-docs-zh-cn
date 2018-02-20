@@ -160,5 +160,5 @@ TypeScript 可以通过 `tsconfig.json` 进行配置。
 
 ## 开发
 
-- [参与贡献指南 (英)](https://github.com/vuejs/vue-cli/blob/dev/.github/CONTRIBUTING.md)
+- [参与贡献指南 (英)](./CONTRIBUTING.md)
 - [插件开发指南](./plugin-dev.md)

@@ -17,6 +17,8 @@
 
 * [Vue CLI](./vue-cli/README.md) - [原版](https://github.com/vuejs/vue-cli/)
 * [@vue/web-component-wrapper](./vue-web-component-wrapper/README.md) - [原版](https://github.com/vuejs/vue-web-component-wrapper/)
+* [@vue/cli-init](./vue-cli-init/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-init/README.md)
+* [@vue/cli-service-global](./vue-cli-service-global/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-service-global/README.md)
 
 ## 欢迎参与贡献
 

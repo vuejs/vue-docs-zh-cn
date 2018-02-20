@@ -118,7 +118,7 @@ module.exports = {
 
 Babel 可以通过 `.babelrc` 或 `package.json` 中的 `babel` 字段进行配置。
 
-所有 Vue CLI 应用使用了 `@vue/babel-preset-app`，它包含了 `babel-preset-env`、JSX 支持和为最小化包体积做的优化配置。请在[其文档 (英)](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/babel-preset-app)查阅相关细节和预设选项。
+所有 Vue CLI 应用使用了 `@vue/babel-preset-app`，它包含了 `babel-preset-env`、JSX 支持和为最小化包体积做的优化配置。请在[其文档](../vue-babel-preset-app/README.md)查阅相关细节和预设选项。
 
 ### CSS
 
@@ -142,11 +142,11 @@ TypeScript 可以通过 `tsconfig.json` 进行配置。
 
 - #### Jest
 
-  请在 [@vue/cli-plugin-unit-jest (英)](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest) 查阅更多细节。
+  请在 [@vue/cli-plugin-unit-jest](../vue-cli-plugin-unit-jest/README.md) 查阅更多细节。
 
 - #### Mocha (via `mocha-webpack`)
 
-  请在 [@vue/cli-plugin-unit-mocha (英)](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-mocha) 查阅更多细节。
+  请在 [@vue/cli-plugin-unit-mocha](../vue-cli-plugin-unit-mocha/README.md) 查阅更多细节。
 
 ### E2E Testing
 

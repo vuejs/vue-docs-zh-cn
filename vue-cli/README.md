@@ -130,13 +130,13 @@ Vue CLI 项目自身支持了 [PostCSS](http://postcss.org/)、[CSS Modules](htt
 
 ESLint 可以通过 `.eslintrc` 或 `package.json` 文件中的 `eslintConfig` 字段进行配置。
 
-请在 [@vue/cli-plugin-eslint (英)](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint) 查阅更多细节。
+请在 [@vue/cli-plugin-eslint](../vue-cli-plugin-eslint/README.md) 查阅更多细节。
 
 ### TypeScript
 
 TypeScript 可以通过 `tsconfig.json` 进行配置。
 
-请在 [@vue/cli-plugin-typescript (英)](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript) 查阅更多细节。
+请在 [@vue/cli-plugin-typescript](../vue-cli-plugin-typescript/README.md) 查阅更多细节。
 
 ### Unit Testing
 
@@ -152,11 +152,11 @@ TypeScript 可以通过 `tsconfig.json` 进行配置。
 
 - #### Cypress
 
-  请在 [@vue/cli-plugin-e2e-cypress (英)](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-e2e-cypress) 查阅更多细节。
+  请在 [@vue/cli-plugin-e2e-cypress](../vue-cli-plugin-e2e-cypress/README.md) 查阅更多细节。
 
 - #### Nightwatch
 
-  请在 [@vue/cli-plugin-e2e-nightwatch (英)](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-e2e-nightwatch) 查阅更多细节。
+  请在 [@vue/cli-plugin-e2e-nightwatch](../vue-cli-plugin-e2e-nightwatch/README.md) 查阅更多细节。
 
 ## 开发
 

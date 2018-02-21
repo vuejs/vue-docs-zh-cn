@@ -19,10 +19,15 @@
 * [@vue/web-component-wrapper](./vue-web-component-wrapper/README.md) - [原版](https://github.com/vuejs/vue-web-component-wrapper/)
 * [@vue/cli-init](./vue-cli-init/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-init/README.md)
 * [@vue/cli-service-global](./vue-cli-service-global/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-service-global/README.md)
+* [@vue/cli-plugin-babel](./vue-cli-plugin-babel/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-babel/README.md)
 * [@vue/babel-preset-app](./vue-babel-preset-app/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/babel-preset-app/README.md)
+* [@vue/cli-plugin-pwa](./vue-cli-plugin-pwa/README.md) (翻译中) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-pwa/README.md)
+* [@vue/cli-plugin-typescript](./vue-cli-plugin-typescript/README.md) (翻译中) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-typescript/README.md)
 * [@vue/cli-plugin-unit-jest](./vue-cli-plugin-unit-jest/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-unit-jest/README.md)
 * [@vue/cli-plugin-unit-mocha](./vue-cli-plugin-unit-mocha/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-unit-mocha/README.md)
-* [@vue/cli-plugin-babel](./vue-cli-plugin-babel/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-babel/README.md)
+* [@vue/cli-plugin-e2e-cypress](./vue-cli-plugin-e2e-cypress/README.md) (翻译中) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-e2e-cypress/README.md)
+* [@vue/cli-plugin-e2e-nightwatch](./vue-cli-plugin-e2e-nightwatch/README.md) (翻译中) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-e2e-nightwatch/README.md)
+* [@vue/cli-plugin-eslint](./vue-cli-plugin-eslint/README.md) (翻译中) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-eslint/README.md)
 
 ## 欢迎参与贡献
 

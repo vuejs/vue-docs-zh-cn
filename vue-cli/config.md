@@ -64,7 +64,7 @@ module.exports = {
   dll: false,
 
   // PWA 插件的选项。
-  // 查阅 (英) https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa
+  // 查阅 https://github.com/jinjiang/vue-doc-zh-cn/vue-cli-plugin-pwa/README.md
   pwa: {},
 
   // 配置 webpack-dev-server 行为。

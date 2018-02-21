@@ -22,6 +22,7 @@
 * [@vue/babel-preset-app](./vue-babel-preset-app/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/babel-preset-app/README.md)
 * [@vue/cli-plugin-unit-jest](./vue-cli-plugin-unit-jest/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-unit-jest/README.md)
 * [@vue/cli-plugin-unit-mocha](./vue-cli-plugin-unit-mocha/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-unit-mocha/README.md)
+* [@vue/cli-plugin-babel](./vue-cli-plugin-babel/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-babel/README.md)
 
 ## 欢迎参与贡献
 

@@ -1,5 +1,7 @@
 # @vue/cli-plugin-unit-mocha
 
+[英文原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-unit-mocha/README.md)
+
 > vue-cli 的 unit-mocha 插件
 
 ## 注入的命令

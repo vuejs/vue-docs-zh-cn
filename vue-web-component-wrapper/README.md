@@ -1,5 +1,7 @@
 # @vue/web-component-wrapper [![CircleCI](https://circleci.com/gh/vuejs/vue-web-component-wrapper.svg?style=shield)](https://circleci.com/gh/vuejs/vue-web-component-wrapper)
 
+[英文原版](https://github.com/vuejs/vue-web-component-wrapper/)
+
 > 将一个 Vue 组件包裹并注册为一个自定义元素。
 
 ## 兼容性

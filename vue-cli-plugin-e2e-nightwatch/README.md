@@ -1,5 +1,7 @@
 # @vue/cli-plugin-e2e-nightwatch
 
+[英文原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-e2e-nightwatch/README.md)
+
 > vue-cli 的 e2e-nightwatch 插件
 
 ## 注入的命令

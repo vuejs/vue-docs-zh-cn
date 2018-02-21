@@ -1,5 +1,7 @@
 # @vue/babel-preset-app
 
+[英文原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/babel-preset-app/README.md)
+
 这是所有 Vue CLI 项目默认的 Babel 预设选项。
 
 ## 包含的内容

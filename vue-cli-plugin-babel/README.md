@@ -1,5 +1,7 @@
 # @vue/cli-plugin-babel
 
+[英文原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-babel/README.md)
+
 > vue-cli 的 babel 插件
 
 ## 配置

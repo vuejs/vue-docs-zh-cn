@@ -1,5 +1,7 @@
 # @vue/cli-plugin-e2e-cypress
 
+[英文原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-e2e-cypress/README.md)
+
 > vue-cli 的 e2e-cypress 插件
 
 这个插件使用 [Cypress](https://www.cypress.io/) 添加 e2e 测试支持。

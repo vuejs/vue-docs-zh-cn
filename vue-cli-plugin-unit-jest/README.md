@@ -1,5 +1,7 @@
 # @vue/cli-plugin-unit-jest
 
+[英文原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-unit-jest/README.md)
+
 > vue-cli 的 unit-jest 插件
 
 ## 注入的命令

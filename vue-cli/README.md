@@ -1,3 +1,7 @@
+# Vue CLI
+
+[英文原版](https://github.com/vuejs/vue-cli/)
+
 ## 目录
 
 - [介绍](#介绍)

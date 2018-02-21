@@ -1,5 +1,7 @@
 # @vue/cli-plugin-eslint
 
+[英文原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-eslint/README.md)
+
 > vue-cli 的 eslint 插件
 
 ## 注入的命令

@@ -1,5 +1,7 @@
 # @vue/cli-plugin-typescript
 
+[英文原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-typescript/README.md)
+
 > vue-cli 的 typescript 插件
 
 使用 TypeScript + `ts-loader` + [fork-ts-checker-webpack-plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin) 实现线程外的快速类型检查。

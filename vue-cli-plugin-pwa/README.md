@@ -1,5 +1,7 @@
 # @vue/cli-plugin-pwa
 
+[英文原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-pwa/README.md)
+
 > vue-cli 的 pwa 插件
 
 ## 配置

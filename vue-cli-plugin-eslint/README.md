@@ -1,29 +1,29 @@
 # @vue/cli-plugin-eslint
 
-> eslint plugin for vue-cli
+> vue-cli 的 eslint 插件
 
-## Injected Commands
+## 注入的命令
 
 - **`vue-cli-service lint`**
 
   ```
-  Usage: vue-cli-service lint [options] [...files]
+  使用：vue-cli-service lint [options] [...files]
 
-  Options:
+  选项：
 
-    --format [formatter] specify formatter (default: codeframe)
-    --no-fix             do not fix errors
+    --format [formatter] 指定格式器 (默认值：codeframe)
+    --no-fix             不修复错误
   ```
 
-  Lints and fixes files. If no specific files are given, it lints all files in `src` and `test`.
+  校验并修复文件中的错误。如果没有指定文件，则会校验 `src` 和 `test` 中的所有文件。
 
-  Other [ESLint CLI options](https://eslint.org/docs/user-guide/command-line-interface#options) are also supported.
+  也支持其它 [ESLint CLI 的选项](https://eslint.org/docs/user-guide/command-line-interface#options)。
 
-## Configuration
+## 配置
 
-ESLint can be configured via `.eslintrc` or the `eslintConfig` field in `package.json`.
+ESLint 可以通过 `.eslintrc` 或 `package.json` 中的 `eslintConfig` 字段进行配置。
 
-Lint-on-save during development with `eslint-loader` can be enabled with the `lintOnSave` option in `vue.config.js`:
+`vue.config.js` 中的 `lintOnSave` 选项可以在开发环境下开启通过 `eslint-loader` 在每次保存时执行校验。
 
 ``` js
 module.exports = {
@@ -31,14 +31,14 @@ module.exports = {
 }
 ```
 
-## Installing in an Already Created Project
+## 在已创建的项目中安装
 
 ``` sh
 npm install -D @vue/cli-plugin-eslint
 vue invoke eslint
 ```
 
-## Injected webpack-chain Rules
+## 注入的 webpack-chain 规则
 
 - `config.rule('eslint')`
 - `config.rule('eslint').use('eslint-loader')`

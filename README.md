@@ -27,7 +27,7 @@
 * [@vue/cli-plugin-unit-mocha](./vue-cli-plugin-unit-mocha/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-unit-mocha/README.md)
 * [@vue/cli-plugin-e2e-cypress](./vue-cli-plugin-e2e-cypress/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-e2e-cypress/README.md)
 * [@vue/cli-plugin-e2e-nightwatch](./vue-cli-plugin-e2e-nightwatch/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-e2e-nightwatch/README.md)
-* [@vue/cli-plugin-eslint](./vue-cli-plugin-eslint/README.md) (翻译中) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-eslint/README.md)
+* [@vue/cli-plugin-eslint](./vue-cli-plugin-eslint/README.md) - [原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-eslint/README.md)
 
 ## 欢迎参与贡献
 

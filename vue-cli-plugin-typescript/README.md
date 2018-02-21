@@ -1,16 +1,16 @@
 # @vue/cli-plugin-typescript
 
-> typescript plugin for vue-cli
+> vue-cli 的 typescript 插件
 
-Uses TypeScript + `ts-loader` + [fork-ts-checker-webpack-plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin) for faster off-thread type checking.
+使用 TypeScript + `ts-loader` + [fork-ts-checker-webpack-plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin) 实现线程外的快速类型检查。
 
-## Configuration
+## 配置
 
-TypeScript can be configured via `tsconfig.json`.
+TypeScript 可以通过 `tsconfig.json` 进行配置。
 
-This plugin can be used alongside `@vue/cli-plugin-babel`. When used with Babel, this plugin will output ES2015 and delegate the rest to Babel for auto polyfill based on browser targets.
+这个插件可以配合 `@vue/cli-plugin-babel` 使用。当使用 Babel 时，该插件将会输出 ES2015 并将其它基于浏览器目标的自动的 polyfill 委托给 Babel。
 
-By default, `ts-loader` is only applied to files inside `src` and `test` directories. If you wish to explicitly transpile a dependency module, you will need to configure webpack in `vue.config.js`:
+默认情况下，`ts-loader` 只应用在 `src` 和 `test` 目录下的文件。如果希望显性编译一个依赖的模块，你需要在 `vue.config.js` 中配置 webpack：
 
 ``` js
 module.exports = {
@@ -23,30 +23,30 @@ module.exports = {
 }
 ```
 
-## Injected Commands
+## 注入的命令
 
-If opted to use [TSLint](https://palantir.github.io/tslint/) during project creation, `vue-cli-service lint` will be injected.
+如果在项目创建的时候选择了 [TSLint](https://palantir.github.io/tslint/)，则会注入 `vue-cli-service lint`。
 
-## Caching
+## 缓存
 
-[cache-loader](https://github.com/webpack-contrib/cache-loader) is enabled by default and cache is stored in `<projectRoot>/node_modules/.cache/cache-loader`.
+[cache-loader](https://github.com/webpack-contrib/cache-loader) 默认开启，被缓存的东西存储在 `<projectRoot>/node_modules/.cache/cache-loader`。
 
-## Parallelization
+## 并行执行
 
-[thread-loader](https://github.com/webpack-contrib/thread-loader) is enabled by default when the machine has more than 1 CPU cores. This can be turned off by setting `parallel: false` in `vue.config.js`.
+[thread-loader](https://github.com/webpack-contrib/thread-loader) 会在多核机器上默认开启。你可以在 `vue.config.js` 中设置 `parallel: false` 将其关闭。
 
-## Installing in an Already Created Project
+## 在已创建的项目中安装
 
 ``` sh
 npm install -D @vue/cli-plugin-typescript
 vue invoke typescript
 ```
 
-## Injected webpack-chain Rules
+## 注入的 webpack-chain 规则
 
 - `config.rule('ts')`
 - `config.rule('ts').use('ts-loader')`
-- `config.rule('ts').use('babel-loader')` (when used alongside `@vue/cli-plugin-babel`)
+- `config.rule('ts').use('babel-loader')` (当配合 `@vue/cli-plugin-babel` 使用时)
 - `config.rule('ts').use('cache-loader')`
 - `config.rule('ts').use('thread-loader')`
 - `config.plugin('fork-ts-checker')`

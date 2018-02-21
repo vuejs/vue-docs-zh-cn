@@ -1,31 +1,31 @@
 # @vue/cli-plugin-e2e-nightwatch
 
-> e2e-nightwatch plugin for vue-cli
+> vue-cli 的 e2e-nightwatch 插件
 
-## Injected Commands
+## 注入的命令
 
 - **`vue-cli-service e2e`**
 
-  run e2e tests with [NightwatchJS](nightwatchjs.org).
+  通过 [NightwatchJS](nightwatchjs.org) 运行 e2e 测试
 
-  Options:
+  选项：
 
   ```
-  --url        run e2e tests against given url instead of auto-starting dev server
-  -e, --env    specify comma-delimited browser envs to run in (default: chrome)
-  -t, --test   sepcify a test to run by name
-  -f, --filter glob to filter tests by filename
+  --url        通过给定的 URL 运行 e2e 测试，而不是自动开启开发服务器
+  -e, --env    指定测试所运行的浏览器环境，多个浏览器用逗号隔开 (默认值：chrome)
+  -t, --test   运行指定名字的测试
+  -f, --filter 通过文件名 glob 过滤测试
   ```
 
-  Additionally, [all Nightwatch CLI options are also supported](https://github.com/nightwatchjs/nightwatch/blob/master/lib/runner/cli/cli.js).
+  额外的，[支持所有的 Nightwatch CLI 选项](https://github.com/nightwatchjs/nightwatch/blob/master/lib/runner/cli/cli.js)。
 
-## Configuration
+## 配置
 
-We've pre-configured Nightwatch to run with Chrome by default. If you wish to run e2e tests in additional browsers, you will need to add a `nightwatch.config.js` or `nightwatch.json` in your project root to configure additional browsers. The config will be merged into the [internal Nightwatch config](https://github.com/vuejs/vue-cli/blob/dev/packages/%40vue/cli-plugin-e2e-nightwatch/nightwatch.config.js).
+我们已经为 Nightwatch 预置了默认通过 Chrome 运行。如果你希望在额外的浏览器上运行 e2e 测试，你需要在你的项目根目录下添加 `nightwatch.config.js` 或 `nightwatch.json` 来配置额外的浏览器。这个配置会合并到[内部 Nightwatch 配置](https://github.com/vuejs/vue-cli/blob/dev/packages/%40vue/cli-plugin-e2e-nightwatch/nightwatch.config.js).
 
-Consult Nightwatch docs for [configuration options](http://nightwatchjs.org/gettingstarted#settings-file) and how to [setup browser drivers](http://nightwatchjs.org/gettingstarted#browser-drivers-setup).
+请咨询 Nightwatch 文档了解[配置选项](http://nightwatchjs.org/gettingstarted#settings-file)以及如何[设置浏览器驱动](http://nightwatchjs.org/gettingstarted#browser-drivers-setup).
 
-## Installing in an Already Created Project
+## 在已创建的项目中安装
 
 ``` sh
 npm install -D @vue/cli-plugin-e2e-nightwatch

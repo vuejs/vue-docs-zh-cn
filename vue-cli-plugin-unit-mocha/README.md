@@ -28,7 +28,7 @@
 
   默认文件匹配规则是：`test/unit` 内所有以 `.spec.(ts|js)` 结尾的文件。
 
-  也支持所有的 [mocha-wepback 命令行选项](http://zinserjan.github.io/mocha-webpack/docs/installation/cli-usage.html)。
+  也支持所有的 [mocha-webpack 命令行选项](http://zinserjan.github.io/mocha-webpack/docs/installation/cli-usage.html)。
 
 ## 配置
 

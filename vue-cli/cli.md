@@ -48,7 +48,7 @@ Options:
   -i, --inlinePreset <json>       忽略提示符并使用内联的 JSON 字符串预设选项
   -m, --packageManager <command>  在安装依赖时使用指定的 npm 客户端
   -r, --registry <url>            在安装依赖时使用指定的 npm registry (仅用于 npm 客户端)
-  -f, --force                     复写目标目录可能存在的配置
+  -f, --force                     覆写目标目录可能存在的配置
   -h, --help                      输出使用帮助信息
 ```
 
@@ -156,7 +156,7 @@ vue invoke eslint --config airbnb --lintOn save
 
 ### 拉取 `vue-cli@2.x` 模板 (遗留)
 
-因为使用了 `vue-cli@2.x` 相同的 `vue` 可执行程序，所以 `@vue/cli` 会将其复写。如果你仍然需要遗留的 `vue init` 功能，你可以安装一个全局的桥：
+因为使用了 `vue-cli@2.x` 相同的 `vue` 可执行程序，所以 `@vue/cli` 会将其覆写。如果你仍然需要遗留的 `vue init` 功能，你可以安装一个全局的桥：
 
 ``` sh
 npm install -g @vue/cli-init

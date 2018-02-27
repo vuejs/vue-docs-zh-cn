@@ -1,32 +1,34 @@
 # vue-class-component
 
-> ECMAScript / TypeScript decorator for class-style Vue components.
+[英文原版](https://github.com/vuejs/vue-class-component/)
+
+> 为撰写 class 形式的 Vue 组件而实现的 ECMAScript / TypeScript 装饰器 (decorator)。
 
 [![npm](https://img.shields.io/npm/v/vue-class-component.svg)](https://www.npmjs.com/package/vue-class-component)
 
-### Usage
+### 使用
 
-**Required**: [ECMAScript stage 1 decorators](https://github.com/wycats/javascript-decorators/blob/master/README.md).
-If you use Babel, [babel-plugin-transform-decorators-legacy](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy) is needed.
-If you use TypeScript, enable `--experimentalDecorators` flag.
+**要求的环境**：[ECMAScript stage 1 的装饰器](https://github.com/wycats/javascript-decorators/blob/master/README.md).
+如果你使用 Babel，则需要 [babel-plugin-transform-decorators-legacy](https://github.com/loganfsmyth/babel-plugin-transform-decorators-legacy)。
+如果你使用 TypeScript，请开启 `--experimentalDecorators` 开关。
 
-> It does not support the stage 2 decorators yet since mainstream transpilers still transpile to the old decorators.
+> 目前还不支持 stage 2 的装饰器，因为主流的语法转换器还是会将内容转换为老版本的装饰器。
 
-Note:
+注意事项：
 
-1. `methods` can be declared directly as class member methods.
+1. `methods` 可以直接声明为 class 成员。
 
-2. Computed properties can be declared as class property accessors.
+2. 计算属性可以声明为 class 属性访问器。
 
-3. Initial `data` can be declared as class properties ([babel-plugin-transform-class-properties](https://babeljs.io/docs/plugins/transform-class-properties/) is required if you use Babel).
+3. 初始的 `data` 可以声明为 class 属性 (如果你使用 Babel，则需要 [babel-plugin-transform-class-properties](https://babeljs.io/docs/plugins/transform-class-properties/))。
 
-4. `data`, `render` and all Vue lifecycle hooks can be directly declared as class member methods as well, but you cannot invoke them on the instance itself. When declaring custom methods, you should avoid these reserved names.
+4. `data`、`render` 以及所有 Vue 的生命周期钩子也可以直接声明为 class 成员方法，但是你无法在其所在实例中直接调用它们。在你声明自定义方法的时候也应该回避这些保留的名字。
 
-5. For all other options, pass them to the decorator function.
+5. 其它选项可以传入修饰器函数。
 
-### Example
+### 示例
 
-Following is the example written in Babel. If you are looking for TypeScript version, [it's in the example directory](example/App.vue).
+接下来的例子是在 Babel 中写的。TypeScript 的版本[在项目的 `example` 目录中](https://github.com/vuejs/vue-class-component/blob/master/example/App.vue)。
 
 ``` vue
 <template>
@@ -74,34 +76,34 @@ export default class App extends Vue {
 </script>
 ```
 
-You may also want to check out the `@prop` and `@watch` decorators provided by [vue-property-decorators](https://github.com/kaorun343/vue-property-decorator).
+另外 [vue-property-decorators](https://github.com/kaorun343/vue-property-decorator) 提供了 `@prop` 和 `@watch` 装饰器，也许你也会感兴趣。
 
-### Using Mixins
+### 使用混入 (Mixin)
 
-vue-class-component provides `mixins` helper function to use [mixins](https://vuejs.org/v2/guide/mixins.html) in class style manner. By using `mixins` helper, TypeScript can infer mixin types and inherit them on the component type.
+vue-class-component 提供了 `mixins` 辅助函数，能够以 class 的形式使用[混入](https://cn.vuejs.org/v2/guide/mixins.html)。通过 `mixins` 辅助行数，TypeScript 可以推导出混入的类型并继承到组件类型上。
 
-Example of declaring a mixin:
+声明一个混入的例子：
 
 ``` js
 // mixin.js
 import Vue from 'vue'
 import Component from 'vue-class-component'
 
-// You can declare a mixin as the same style as components.
+// 你可以像声明一个组件一样声明混入。
 @Component
 export class MyMixin extends Vue {
   mixinValue = 'Hello'
 }
 ```
 
-Example of using a mixin:
+使用一个混入的例子：
 
 ``` js
 import Component, { mixins } from 'vue-class-component'
 import MyMixin from './mixin.js'
 
-// Use `mixins` helper function instead of `Vue`.
-// `mixins` can receive any number of arguments.
+// 使用 `mixins` 辅助函数代替 `Vue`。
+// `mixins` 可以接收任何数量的参数。
 @Component
 export class MyComp extends mixins(MyMixin) {
   created () {
@@ -110,23 +112,23 @@ export class MyComp extends mixins(MyMixin) {
 }
 ```
 
-### Create Custom Decorators
+### 创建自定义装饰器
 
-You can extend the functionality of this library by creating your own decorators. vue-class-component provides `createDecorator` helper to create custom decorators. `createDecorator` expects a callback function as the 1st argument and the callback will receive following arguments:
+你可以通过创建你自己的装饰器扩展这个库的功能。vue-class-component 提供了用来创建自定义修饰器的 `createDecorator` 辅助函数。`createDecorator` 接收一个回调函数作为其第一个参数，而该回调函数将会接收以下参数：
 
-- `options`: Vue component options object. Changes for this object will affect the provided component.
-- `key`: The property or method key that the decorator is applied.
-- `parameterIndex`: The index of a decorated argument if the custom decorator is used for an argument.
+- `options`：Vue 组件选项对象。对这个对象的改动讲影响到提供的组件。
+- `key`：该修饰符应用的属性或方法的键名。
+- `parameterIndex`：被装饰的参数的索引值，如果该自定义装饰器作为一个参数被使用时。
 
-Example of creating `NoCache` decorator:
+创建 `NoCache` 装饰器的示例：
 
 ``` js
 // decorators.js
 import { createDecorator } from 'vue-class-component'
 
 export const NoCache = createDecorator((options, key) => {
-  // component options should be passed to the callback
-  // and update for the options object affect the component
+  // 组件选项应该传递给回调函数
+  // 且对选项对象的更新而影响到该组建
   options.computed[key].cache = false
 })
 ```
@@ -136,7 +138,7 @@ import { NoCache } from './decorators'
 
 @Component
 class MyComp extends Vue {
-  // the computed property will not be cached
+  // 这个计算属性不会被缓存
   @NoCache
   get random () {
     return Math.random()
@@ -144,15 +146,15 @@ class MyComp extends Vue {
 }
 ```
 
-### Adding Custom Hooks
+### 添加自定义钩子
 
-If you use some Vue plugins like Vue Router, you may want class components to resolve hooks that they provides. For that case, `Component.registerHooks` allows you to register such hooks:
+如果你使用了相同的 Vue 组件，比如 Vue Router，你可能希望 class 形式的组件能够解析它们提供的钩子。在这种情况下，`Component.registerHooks` 允许你注册每个钩子：
 
 ```js
 // class-component-hooks.js
 import Component from 'vue-class-component'
 
-// Register the router hooks with their names
+// 以他们的名字注册路由器钩子
 Component.registerHooks([
   'beforeRouteEnter',
   'beforeRouteLeave',
@@ -167,8 +169,8 @@ import Component from 'vue-class-component'
 
 @Component
 class MyComp extends Vue {
-  // The class component now treats beforeRouteEnter
-  // and beforeRouteLeave as Vue Router hooks
+  // 这个 class 组件现在处理了 beforeRouteEnter
+  // 和 beforeRouteLeave 作为 Vue Router 的钩子
   beforeRouteEnter () {
     console.log('beforeRouteEnter')
   }
@@ -179,12 +181,12 @@ class MyComp extends Vue {
 }
 ```
 
-Note that you have to register the hooks before component definition.
+注意你需要在组件定义完成之前注册钩子。
 
 ```js
 // main.js
 
-// Make sure to register before importing any components
+// 确认在导入任何组件之前进行注册
 import './class-component-hooks'
 
 import Vue from 'vue'
@@ -198,13 +200,13 @@ new Vue({
 })
 ```
 
-### Caveats of Class Properties
+### Class 属性的注意事项
 
-vue-class-component collects class properties as Vue instance data by instantiating the original constructor under the hood. While we can define instance data like native class manner, we sometimes need to know how it works.
+vue-class-component 会通过在底层将原本构造函数实例化来收集 class 的属性作为 Vue 示例数据。当我们可以像原生 class 一样定义实例数据时，我们有时需要知道它是如何工作的。
 
-#### `this` value in property
+#### 属性里的 `this` 的值
 
-If you define an arrow function as a class property and access `this` in it, it will not work. This is because `this` is just a proxy object to Vue instance when initializing class properties:
+如果你定义了一个箭头函数作为一个 class 的属性并在其中访问 `this`，它将不会正常工作。这是因为当初始化 class 属性的时候，`this` 只是一个 Vue 实例的代理对象：
 
 ```js
 @Component
@@ -212,14 +214,14 @@ class MyComp extends Vue {
   foo = 123
 
   bar = () => {
-    // Does not update the expected property.
-    // `this` value is not a Vue instance in fact.
+    // 不会如预期更新属性。
+    // `this` 的值不是真正的 Vue 实例。
     this.foo = 456
   }
 }
 ```
 
-You can simply define a method instead of a class property in that case because Vue will bind the instance automatically:
+在那种情况下，你可以简单的定义一个方法，而不是一个 class 属性，因为 Vue 会自动绑定该实例：
 
 ```js
 @Component
@@ -233,38 +235,38 @@ class MyComp extends Vue {
 }
 ```
 
-#### `undefined` will not be reactive
+#### `undefined` 将不会被响应
 
-To take consistency between the decorator behavior of Babel and TypeScript, vue-class-component does not make a property reactive if it has `undefined` as initial value. You should use `null` as initial value or use `data` hook to initialize `undefined` property instead.
+为了让 Babel 和 TypeScript 的装饰器行为保持一致，如果一个属性的初始值是 `undefined`，那么 vue-class-component 不会使其产生响应性。你应该用 `null` 作为初始值替而代之，或使用 `data` 钩子来初始化 `undefined` 的属性。
 
 ```js
 @Component
 class MyComp extends Vue {
-  // Will not be reactive
+  // 不会有响应性
   foo = undefined
 
-  // Will be reactive
+  // 会有响应性
   bar = null
 
   data () {
     return {
-      // Will be reactive
+      // 会有响应性
       baz: undefined
     }
   }
 }
 ```
 
-### Build the Example
+### 构建该示例
 
 ``` bash
 $ npm install && npm run example
 ```
 
-### Questions
+### 答疑
 
-For questions and support please use the [the official forum](http://forum.vuejs.org) or [community chat](https://chat.vuejs.org/). The issue list of this repo is **exclusively** for bug reports and feature requests.
+如有相关问题请移步[官方论坛](http://forum.vuejs.org)或[社区聊天室](https://chat.vuejs.org/)。仓库本身的 issue 列表**仅仅**会受理 bug 报告和新特性请求。
 
-### License
+### 证书
 
 [MIT](http://opensource.org/licenses/MIT)

@@ -1,4 +1,4 @@
-# vue-class-component
+# Vue Class Component
 
 [英文原版](https://github.com/vuejs/vue-class-component/)
 

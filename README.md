@@ -28,8 +28,9 @@
   * [@vue/cli-plugin-e2e-cypress](./vue-cli-plugin-e2e-cypress/README.md) - [英文原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-e2e-cypress/README.md)
   * [@vue/cli-plugin-e2e-nightwatch](./vue-cli-plugin-e2e-nightwatch/README.md) - [英文原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-e2e-nightwatch/README.md)
 * [@vue/web-component-wrapper](./vue-web-component-wrapper/README.md) - [英文原版](https://github.com/vuejs/vue-web-component-wrapper/)
-* [vue-template-compiler](./vue-template-compiler/README.md) - [英文原版](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler/README.md)
-* [vue-class-component](./vue-class-component/README.md) - [英文原版](https://github.com/vuejs/vue-class-component/)
+* [Vue Template Compiler](./vue-template-compiler/README.md) - [英文原版](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler/README.md)
+* [Vue Class Component](./vue-class-component/README.md) - [英文原版](https://github.com/vuejs/vue-class-component/)
+* [Vuex Router Sync](./vuex-router-sync) - [英文原版](https://github.com/vuejs/vuex-router-sync/)
 
 ## 欢迎参与贡献
 

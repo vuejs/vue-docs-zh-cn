@@ -1,4 +1,4 @@
-# vue-template-compiler
+# Vue Template Compiler
 
 [英文原版](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler/README.md)
 

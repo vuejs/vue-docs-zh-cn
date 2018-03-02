@@ -116,7 +116,7 @@ Options:
 
 #### 构建为一个库或 Web Component
 
-我们也有可能在你的项目中将任何组件构建成为一个库或 web component。请在[构建目标](./build-target.md)查阅更多细节。
+我们也有可能在你的项目中将任何组件构建成为一个库或 web component。请在[构建目标](./build-targets.md)查阅更多细节。
 
 #### DLL 模式
 

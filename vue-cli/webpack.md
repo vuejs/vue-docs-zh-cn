@@ -60,6 +60,25 @@ module.exports = {
 }
 ```
 
+#### 修改 Loader 选项
+
+``` js
+// vue.config.js
+module.exports = {
+  chainWebpack: config => {
+    config.module
+      .rule('scss')
+      .use('sass-loader')
+      .tap(options =>
+        merge(options, {
+          includePaths: [path.resolve(__dirname, 'node_modules')],
+        })
+      )
+  }
+}
+```
+
+
 #### 修改插件选项
 
 ``` js

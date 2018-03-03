@@ -37,6 +37,12 @@ VUE_APP_SECRET=secret
 
 你可以通过为 `.env` 文件增加后缀来设置某个模式下的环境变量。比如，如果你在项目根目录创建一个名为 `.env.development` 的文件，那么在这个文件里声明过的变量就只会在 development 模式下被载入。
 
+在[构建命令](./cli-service.md#构建)中传递 `--mode` 选项标记将会在构建过程中使用那个模式的环境变量。例如，如果你想要在构建命令中使用开发环境变量，请在你的 `package.json` 脚本中加入：
+
+```
+"dev-build": "vue-cli-service build --mode development",
+```
+
 ### 在客户端侧代码中使用环境变量
 
 只有以 `VUE_APP_` 开头的变量会被 `webpack.DefinePlugin` 静态嵌入到客户端侧的包中。你可以在应用的代码中这样访问它们：

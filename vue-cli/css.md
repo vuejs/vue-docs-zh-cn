@@ -17,6 +17,8 @@ Vue CLI 内部使用了 PostCSS，并默认开启了 [autoprefixer](https://gith
 
 如果你希望能够不带 `.module` 后缀使用 CSS Modules，你可以在 `vue.config.js` 中设置 `css: { modules: true }`。该选项不会影响 `*.vue` 文件。
 
+如果你想要自定义 CSS Modules 类名的输出格式，你可以在 `vue.config.js` 中设置 `css: { localIdentName: [name]__[local]--[hash:base64:5]}` 这样的选项。
+
 ### 预处理器
 
 你可以在创建项目的时候选择预处理器 (Sass/Less/Stylus)。如果当时没有选好，你也可以手动安装相应的 webpack loader。这些 loader 会被预配置好且被自动采集。例如，想要在一个已有的项目中添加 Sass，只需运行：

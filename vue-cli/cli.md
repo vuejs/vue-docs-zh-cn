@@ -129,26 +129,41 @@ vue build MyComponent.vue
 
 ### 在一个已有的项目中安装插件
 
-每个 CLI 插件都包含了一个 (创建文件的) 生成器和一个 (调整 webpack 核心配置和注入命令的) 运行时插件。当你使用 `vue create` 创建一个新项目时，就会根据你选择的特性预装一些插件。而当你想要在一个已有的项目中装入一个插件时，第一步可以简单的先将其安装：
+每个 CLI 插件都包含了一个 (创建文件的) 生成器和一个 (调整 webpack 核心配置和注入命令的) 运行时插件。当你使用 `vue create` 创建一个新项目时，就会根据你选择的特性预装一些插件。而当你想要在一个已有的项目中装入一个插件时，你可以使用 `vue add` 命令：
 
 ``` sh
-npm install -D @vue/cli-plugin-eslint
+vue add @vue/eslint
 ```
 
-然后你可以调用插件的生成器以在你的项目中生成文件：
+> 注意：我们推荐在运行 `vue add` 之前提交你项目的当前状态，因为这个命令会调用该插件的文件生成器并有可能改动你现有的文件。
+
+这个命令将 `@vue/eslint` 解析为完整的包名 `@vue/cli-plugin-eslint`，并从 npm 将其安装，然后调用它的生成器。
 
 ``` sh
-# `@vue/cli-plugin-` 前缀可以省略
-vue invoke eslint
+# 这个命令和之前的用法等价
+vue add @vue/cli-plugin-eslint
 ```
 
-额外的，你可以向插件传递选项：
+如果没有携带 `@vue` 前缀，则该命令会转为解析为无作用域的包。例如，下面的命令会安装第三方插件 `vue-cli-plugin-apollo`：
 
 ``` sh
-vue invoke eslint --config airbnb --lintOn save
+# 安装并调用 `vue-cli-plugin-apollo`
+vue add apollo
 ```
 
-这里推荐在运行 `vue invoke` 之前将你项目当前的状态提交，以便在生成文件之后回顾文件变更，并在必要的时候将这些变更恢复。
+你也可以基于一个指定的作用域使用第三方插件。例如，如果一个插件名为 `@foo/vue-cli-plugin-bar`，则你可以这样添加它：
+
+``` sh
++vue add @foo/bar
+```
+
+最终，你可以向已安装的插件传递生成器选项：
+
+``` sh
+vue add @vue/eslint --config airbnb --lintOn save
+```
+
+如果一个插件已经安装好了，你可以跳过这个安装过程而只通过 `vue invoke` 命令调用其生成器。该命令接受和 `vue add` 一样的参数。
 
 ### 审查 webpack 配置
 

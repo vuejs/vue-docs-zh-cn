@@ -198,6 +198,48 @@ module.exports = (api, options, rootOptions) => {
 }
 ```
 
+#### 生成器模板
+
+当你调用 `api.render('./template')` 时，该生成器将会使用 [EJS](https://github.com/mde/ejs) 渲染 `./template` 中的文件 (相对于生成器文件路径进行解析)
+
+额外的，你可以使用 YAML 前置元信息继承并替换已有的模板文件的一部分：
+
+``` ejs
+---
+extend: '@vue/cli-service/generator/template/src/App.vue'
+replace: !!js/regexp /<script>[^]*?<\/script>/
+---
+
+<script>
+export default {
+  // 替换默认脚本
+}
+</script>
+```
+
+你也可以完成多处替换，当然你需要将要替换的字符串用 `<%# REPLACE %>` 和 `<%# END_REPLACE %>` 块包裹起来：
+
+``` ejs
+---
+extend: '@vue/cli-service/generator/template/src/App.vue'
+replace:
+  - !!js/regexp /欢迎来到你的 Vue\.js 应用/
+  - !!js/regexp /<script>[^]*?<\/script>/
+---
+
+<%# REPLACE %>
+替换欢迎信息
+<%# END_REPLACE %>
+
+<%# REPLACE %>
+<script>
+export default {
+  // 替换默认脚本
+}
+</script>
+<%# END_REPLACE %>
+```
+
 ### 提示符
 
 #### 内建插件的提示符

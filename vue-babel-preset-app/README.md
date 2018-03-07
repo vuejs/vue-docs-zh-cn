@@ -22,8 +22,8 @@
 - Vue JSX 语法支持
   - [@babel/plugin-syntax-jsx](https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-jsx)
   - [babel-plugin-transform-vue-jsx](https://github.com/vuejs/babel-plugin-transform-vue-jsx)
-  - [babel-plugin-jsx-event-modifiers](https://github.com/nickmessing/babel-plugin-jsx-event-modifiers)
-  - [babel-plugin-jsx-v-model](https://github.com/nickmessing/babel-plugin-jsx-v-model)
+  - ~~[babel-plugin-jsx-event-modifiers](https://github.com/nickmessing/babel-plugin-jsx-event-modifiers)~~ (在 Babel 7 修复之前暂时不可用)
+  - ~~[babel-plugin-jsx-v-model](https://github.com/nickmessing/babel-plugin-jsx-v-model)~~ (在 Babel 7 修复之前暂时不可用)
 
 ## 选项
 

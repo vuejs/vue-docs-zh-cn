@@ -60,9 +60,77 @@ vue create my-project
   <img width="682px" src="https://raw.githubusercontent.com/vuejs/vue-cli/dev/docs/screenshot.png">
 </p>
 
-#### 预设选项
+### 预设选项
 
-在你选择了特性之后，你可以选择性的将其保持为预设选项，这样你就可以在未来的项目中反复使用了。如果你想要删除一个已保存的预设选项，可以编辑 `~/.vuerc`。
+在你选择了特性之后，你可以选择性的将其保持为预设选项，这样你就可以在未来的项目中反复使用了。如果你想要删除或调整一个已保存的预设选项，可以编辑 `~/.vuerc`。
+
+预设选项是在 JSON 中被定义的。如果你已经通过命令行保存了一个预设选项，那么你打开 `~/.vuerc` 之后会找到类似如下内容：
+
+``` json
+{
+  "useConfigFiles": true,
+  "router": true,
+  "vuex": true,
+  "cssPreprocessor": "sass",
+  "plugins": {
+    "@vue/cli-plugin-babel": {},
+    "@vue/cli-plugin-eslint": {
+      "config": "airbnb",
+      "lintOn": ["save", "commit"]
+    }
+  }
+}
+```
+
+这些预设选项数据会被插件生成器用来生成响应的项目文件。除了上述字段，你也可以为自己的集成工具添加任何配置项：
+
+``` js
+{
+  "useConfigFiles": true,
+  "plugins": {...},
+  "configs": {
+    "vue": {...},
+    "postcss": {...},
+    "eslintConfig": {...},
+    "jest": {...}
+  }
+}
+```
+
+这些额外的配置项将会根据 `useConfigFiles` 的值被合并到 `package.json` 或相应的配置文件中。比如，在 `"useConfigFiles": true` 的时候，`configs.vue` 的值会被合并到 `vue.config.js`。
+
+#### 预设选项插件版本控制
+
+你可以显性的指定使用的插件的版本：
+
+``` js
+{
+  "plugins": {
+    "@vue/cli-plugin-eslint": {
+      "version": "^3.0.0",
+      // ... 这个插件的其它选项
+    }
+  }
+}
+```
+
+注意这对于官方插件的不必要的——当它被忽略的时候，CLI 将会自动使用注册源中最新的可用版本。不管怎样，**我们推荐在预设选项中为列出的第三方插件都显性提供版本范围**。
+
+#### 远程预设选项
+
+你可以在一个 git 仓库中发布一个预设选项分享给其他开发者。这个仓库应该包含一个包含预设选项数据的 `preset.json` 文件。然后你可以在创建一个项目的时候使用 `--preset` 选项来选用这个远程的预设选项：
+
+``` sh
+# 从 GitHub 仓库使用预设选项
+vue create --preset username/repo my-project
+```
+
+GitLab 和 BitBucket 也是支持的。如果要从从私有仓库获取，请确认使用 `--clone` 选项：
+
+``` sh
+vue create --preset gitlab:username/repo --clone my-project
+vue create --preset bitbucket:username/repo --clone my-project
+```
 
 ### 零配置原型
 

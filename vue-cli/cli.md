@@ -27,7 +27,7 @@ Commands:
   invoke <plugin> [pluginOptions]  在一个已有的项目中调用一个插件的生成器
   inspect [options] [paths...]     在一个基于 `vue-cli-service` 的项目中审查 webpack 配置
   serve [options] [entry]          在开发环境下零配置服务一个 `.js` 或 `.vue` 文件
-  build [options] [entry]          在生产环境下领配置构建一个 `.js` 或 `.vue` 文件
+  build [options] [entry]          在生产环境下零配置构建一个 `.js` 或 `.vue` 文件
   init <template> <app-name>       从一个远程模板生成一个项目 (遗留 API, 依赖 `@vue/cli-init`)
 ```
 

@@ -31,6 +31,7 @@
 * [Vue Template Compiler](./vue-template-compiler/README.md) - [英文原版](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler/README.md)
 * [Vue Class Component](./vue-class-component/README.md) - [英文原版](https://github.com/vuejs/vue-class-component/)
 * [Vuex Router Sync](./vuex-router-sync/README.md) - [英文原版](https://github.com/vuejs/vuex-router-sync/)
+* [Vue Style Loader](./vue-style-loader/README.md) - [英文原版](https://github.com/vuejs/vue-style-loader)
 
 ## 欢迎参与贡献
 

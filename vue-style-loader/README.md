@@ -1,18 +1,20 @@
-# vue-style-loader [![Build Status](https://circleci.com/gh/vuejs/vue-style-loader/tree/master.svg?style=shield)](https://circleci.com/gh/vuejs/vue-loader/tree/master) [![npm package](https://img.shields.io/npm/v/vue-style-loader.svg)](https://www.npmjs.com/package/vue-style-loader)
+# Vue Style Loader [![Build Status](https://circleci.com/gh/vuejs/vue-style-loader/tree/master.svg?style=shield)](https://circleci.com/gh/vuejs/vue-loader/tree/master) [![npm package](https://img.shields.io/npm/v/vue-style-loader.svg)](https://www.npmjs.com/package/vue-style-loader)
 
-This is a fork based on [style-loader](https://github.com/webpack/style-loader). Similar to `style-loader`, you can chain it after `css-loader` to dynamically inject CSS into the document as style tags. However, since this is included as a dependency and used by default in `vue-loader`, in most cases you don't need to configure this loader yourself.
+[英文原版](https://github.com/vuejs/vue-style-loader)
 
-## Options
+这个库 fork 自 [`style-loader`](https://github.com/webpack/style-loader)。和 `style-loader` 一样，你可以在 `css-loader` 之后将其链起来，并通过它将 CSS 以样式标记的方式动态注入到文档中。不过因为这个库已经在 `vue-loader` 的默认依赖中，多数情况下你是不需要自行配置该 loader 的。
+
+## 选项
 
 - **manualInject** (3.1.0+):
 
-  Type: `boolean`. When importing the style from a non-vue-file, by default the style is injected as a side effect of the import. When `manualInject` is true, the imported style object exposes a `__inject__` method, which can then be called manually at appropriate timing. If called on the server, the method expects one argument which is the `ssrContext` to attach styles to.
+  类型：`boolean`。当从一个非 Vue 文件导入样式的时候，默认情况下样式会作为该导入内容的一个副作用被注入。当 `manualInject` 为真多时候，被导入的样式对象会暴露一个 `__inject__` 方法，供您自行选择恰当的时机手动调用。如果这个方法在服务端被调用，则会接收一个待添加样式的 `ssrContext` 的参数。
 
   ``` js
   import styles from 'styles.scss'
 
   export default {
-    beforeCreate() { // or create a mixin for this purpose
+    beforeCreate() { // 或者为此创建一个混入 (mixin)
       if(styles.__inject__) {
         styles.__inject__(this.$ssrContext)
       }
@@ -24,24 +26,24 @@ This is a fork based on [style-loader](https://github.com/webpack/style-loader).
   }
   ```
 
-  Note this behavior is enabled automatically when `vue-style-loader` is used on styles imported within a `*.vue` file. The option is only exposed for advanced usage.
+  注意当 `vue-style-loader` 用在从一个 `*.vue` 文件内导入样式的时候，这个行为是自动开启的。暴露该选项只是为了高阶的用法。
 
 - **ssrId** (3.1.0+):
 
-  Type: `boolean`. Add `data-vue-ssr-id` attribute to injected `<style>` tags even when not in Node.js. This can be used with pre-rendering (instead of SSR) to avoid duplicate style injection on hydration.
+  类型：`boolean`。为被注入的 `<style>` 标签添加 `data-vue-ssr-id` 特性，哪怕它现在不在 Node.js 中。它可以用来预渲染 (而不是服务端渲染) 而避免在水合 (hydration) 过程中重复的样式注入。
 
-## Differences from `style-loader`
+## 和 `style-loader` 的不同
 
-### Server-Side Rendering Support
+### 对服务端渲染的支持
 
-When bundling with `target: 'node'`, the styles in all rendered components are collected and exposed on the Vue render context object as `context.styles`, which you can simply inline into your markup's `<head>`. If you are building a Vue SSR app, you probably should use this loader for CSS imported from JavaScript files too.
+当以 `target: 'node'` 为目标打包时，所有被渲染的组件会被收集和暴露为 Vue 的渲染上下文对象中的 `context.styles`，你可以将其简单的内联到你的 `<head>` 标记中。如果你在构建一个 Vue SSR 应用，你可能也希望使用这个 loader 从 JavaScript 文件导入 CSS。
 
-### Misc
+### 其它
 
-- Does not support url mode and reference counting mode. Also removed `singleton` and `insertAt` query options. It always automatically pick the style insertion mechanism that makes most sense. If you need these capabilities you should probably use the original `style-loader` instead.
+- 不支持 URL 模式和引用计数模式。也移除了 `singletion` 和 `insertAt` 查询选项。它总是自动选取最合理的样式插入机制。如果你需要这些能力，你可能应该使用原始的 `style-loader` 取而代之。
 
-- Fixed the issue that root-relative URLs are interpreted against chrome:// urls and make source map URLs work for injected `<style>` tags in Chrome.
+- 修复了针对 chrome:// 的相对根 URL 被解析的问题，以及为被注入 Chrome 的 `<style>` 标记制作 source map URL 的问题。
 
-## License
+## 协议
 
 MIT

@@ -176,7 +176,7 @@ vue serve MyComponent.vue
 ```
 Usage: build [options] [entry]
 
-在生产环境下领配置构建一个 `.js` 或 `.vue` 文件
+在生产环境下零配置构建一个 `.js` 或 `.vue` 文件
 
 
 Options:

@@ -13,6 +13,7 @@
 * [Vue Test Utils](https://vue-test-utils.vuejs.org/zh-cn/)
 * [Vue SSR](https://ssr.vuejs.org/zh/)
 * [vue-rx](https://github.com/vuejs/vue-rx/blob/master/README-CN.md)
+* [VuePress](https://vuepress.vuejs.org/zh/)
 
 ### 集中放置在该仓库的文档
 

@@ -30,14 +30,14 @@ VUE_APP_SECRET=secret
 **模式**是 Vue CLI 项目中一个重要的概念。默认情况下，一个 Vue CLI 项目有三个模式：
 
 - `development` 模式用于 `vue-cli-service serve`
-- `production` 模式用于 `vue-cli-service build`
-- `test` 模式用于 `vue-cli-service test`
+- `production` 模式用于 `vue-cli-service build` 和 `vue-cli-service test:e2e`
+- `test` 模式用于 `vue-cli-service test:unit`
 
 注意模式不同于 `NODE_ENV`，因为一个模式可以包含多个环境变量。说到这里，每个模式都会将 `NODE_ENV` 的值设置为模式的名称——比如在 development 模式下 `NODE_ENV` 的值会被设置为 `"development"`。
 
 你可以通过为 `.env` 文件增加后缀来设置某个模式下的环境变量。比如，如果你在项目根目录创建一个名为 `.env.development` 的文件，那么在这个文件里声明过的变量就只会在 development 模式下被载入。
 
-在[构建命令](./cli-service.md#构建)中传递 `--mode` 选项标记将会在构建过程中使用那个模式的环境变量。例如，如果你想要在构建命令中使用开发环境变量，请在你的 `package.json` 脚本中加入：
+你可以通过传递 `--mode` 选项标记为命令行覆写默认的模式。例如，如果你想要在构建命令中使用开发环境变量，请在你的 `package.json` 脚本中加入：
 
 ```
 "dev-build": "vue-cli-service build --mode development",

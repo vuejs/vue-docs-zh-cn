@@ -10,32 +10,24 @@ Cypress 为运行 e2e 测试提供一套富交互界面，但是目前只支持�
 
 ## 注入的命令
 
-- **`vue-cli-service e2e`**
+- **`vue-cli-service test:e2e`**
 
-  使用 `cypress run` 运行无界面的 e2e 测试。
+  使用 `cypress run` 运行 e2e 测试。
+
+  默认它通过一个可视化界面启动 Cypress 的交互模式。如果你想要以无头模式 (例如在 CI 的场景下) 运行测试，你可以加入 `--headless` 选项。
+
+  这个命令会自动以生产环境模式开启一个服务器来运行 e2e 测试。如果你连续运行多次测试而不会每次都重启服务器，你可以在一个终端运行 `vue-cli-service serve --mode production` 启动服务器，然后使用 `--url` 选项指定服务器运行 e2e 测试。
 
   选项：
 
   ```
+  --headless 不带可视化界面在无头模式下运行
+  --mode     指定开发服务器应该运行的环境。(默认：生产环境)
   --url      通过给定的 URL 运行 e2e 测试，而不是自动开启开发服务器
-  -s, --spec 运行一个明确的 spec 文件。默认是 "all"
+  -s, --spec (只适用于无头模式) 运行一个明确的 spec 文件。默认是 "all"
   ```
 
   额外的，[支持所有 Cypress CLI `cypress run` 的选项](https://docs.cypress.io/guides/guides/command-line.html#cypress-run).
-
-- **`vue-cli-service e2e:open`**
-
-  以非交互模式运行 `cypress open` 进行 e2e 测试。
-
-  选项：
-
-  ```
-  --url      通过给定的 URL 运行 e2e 测试，而不是自动开启开发服务器
-  ```
-
-  额外的，[支持所有 Cypress CLI `cypress open` 的选项](https://docs.cypress.io/guides/guides/command-line.html#cypress-open).
-
-  两个命令都会自动以生产环境模式开启一个服务器来运行 e2e 测试。如果你连续运行多次测试而不会每次都重启服务器，你可以在一个终端运行 `vue-cli-service serve --mode production` 启动服务器，然后使用 `--url` 选项指定服务器运行 e2e 测试。
 
 ## 配置
 
@@ -44,6 +36,5 @@ Cypress 为运行 e2e 测试提供一套富交互界面，但是目前只支持�
 ## 在已创建的项目中安装
 
 ``` sh
-npm install -D @vue/cli-plugin-e2e-cypress
-vue invoke e2e-cypress
+vue add e2e-cypress
 ```

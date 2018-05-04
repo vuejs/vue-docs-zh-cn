@@ -79,6 +79,22 @@ module.exports = {
 ```
 
 
+#### 替换已有的基础的 Loader
+
+如果你想要替换一个已有的 [基础 loader](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-service/lib/config/base.js)，例如为内联的 SVG 文件使用 `vue-svg-loader` 而不是加载这个文件：
+
+``` js
+// vue.config.js
+module.exports = {
+  chainWebpack: config => {
+    config.module
+      .rule('svg')
+      .use('file-loader')
+        .loader('vue-svg-loader')
+  }
+}
+```
+
 #### 修改插件选项
 
 ``` js
@@ -95,6 +111,24 @@ module.exports = {
 ```
 
 你需要熟悉 [webpack-chain 的 API](https://github.com/mozilla-neutrino/webpack-chain#getting-started) 并[阅读一些源码](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-service/lib/config)以便了解如何权衡这个选项的全部能量，但是它给了你比直接修改 webpack 配置中的值更生动且安全的方式。
+
+比方说你想要将 `index.html` 默认的路径从 */Users/username/proj/public/index.html* 改为 */Users/username/proj/app/templates/index.html*。通过参考 [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin#options) 你能看到一个可以传入的选项列表。我们可以下列配置传入一个新的模板路径来改变它：
+
+``` js
+// vue.config.js
+module.exports = {
+  chainWebpack: config => {
+    config
+      .plugin('html')
+      .tap(args => {
+        args[0].template = '/Users/username/proj/app/templates/index.html'
+        return args
+      })
+  }
+}
+```
+
+你可以通过我们接下来要讨论的 **`vue inspect`** 实用工具来确认变更。
 
 ### 审查项目的 webpack 配置
 

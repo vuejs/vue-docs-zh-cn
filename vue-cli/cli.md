@@ -43,12 +43,15 @@ Usage: create [options] <app-name>
 
 Options:
 
-  -p, --preset <presetName>       忽略提示符并使用已保存的预设选项
+  -p, --preset <presetName>       忽略提示符并使用已保存的或远程的预设选项
   -d, --default                   忽略提示符并使用默认预设选项
   -i, --inlinePreset <json>       忽略提示符并使用内联的 JSON 字符串预设选项
   -m, --packageManager <command>  在安装依赖时使用指定的 npm 客户端
   -r, --registry <url>            在安装依赖时使用指定的 npm registry (仅用于 npm 客户端)
+  -g, --git [message]             强制 / 跳过 git 初始化，并可选的指定初始化提交信息
   -f, --force                     覆写目标目录可能存在的配置
+  -c, --clone                     使用 git clone 获取远程预设选项
+  -x, --proxy                     使用指定的代理创建项目
   -h, --help                      输出使用帮助信息
 ```
 

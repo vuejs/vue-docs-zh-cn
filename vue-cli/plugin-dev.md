@@ -72,54 +72,53 @@ module.exports = (api, projectOptions) => {
 }
 ```
 
-#### Service 插件中的环境变量
+#### Specifying Mode for Commands
 
-对于环境变量来说，有一个值得注意的重要的事情，就是了解它们何时被解析。一般情况下，像 `vue-cli-service serve` 或 `vue-cli-service build` 这样的命令会始终调用 `api.setMode()` 作为它的第一件事。然而，这也意味着这些环境变量可能在 service 插件被调用的时候还不可用：
+<!-- 对于环境变量来说，有一个值得注意的重要的事情，就是了解它们何时被解析。一般情况下，像 `vue-cli-service serve` 或 `vue-cli-service build` 这样的命令会始终调用 `api.setMode()` 作为它的第一件事。然而，这也意味着这些环境变量可能在 service 插件被调用的时候还不可用： -->
+> Note: the way plugins set modes has been changed in beta.10.
+
+If a plugin-registered command needs to run in a specific default mode,
+the plugin needs to expose it via `module.exports.defaultModes` in the form
+of `{ [commandName]: mode }`:
 
 ``` js
 module.exports = api => {
-  process.env.NODE_ENV // 可能还没有解析出来
-
   api.registerCommand('build', () => {
-    api.setMode('production')
+    // ...
   })
+}
+
+module.exports.defaultModes = {
+  build: 'production'
 }
 ```
 
-所以，在 `configureWebpack` 或 `chainWebpack` 函数中依赖环境变量更加安全，它们只有在 `api.resolveWebpackConfig()` 完全调用结束之后才会被懒执行：
-
-``` js
-module.exports = api => {
-  api.configureWebpack(config => {
-    if (process.env.NODE_ENV === 'production') {
-      // ...
-    }
-  })
-}
-```
+This is because the command's expected mode needs to be known before loading environment variables, which in turn needs to happen before loading user options / applying the plugins.
 
 #### 在插件中解析 webpack 配置
 
 一个插件可以通过调用 `api.resolveWebpackConfig()` 取回解析好的 webpack 配置。每次调用都会新生成一个 webpack 配置用于在未来修改。
 
 ``` js
-api.registerCommand('my-build', args => {
-  // 确认模式设置并加载环境变量
-  api.setMode('production')
+module.exports = api => {
+  api.registerCommand('my-build', args => {
+    const configA = api.resolveWebpackConfig()
+    const configB = api.resolveWebpackConfig()
 
-  const configA = api.resolveWebpackConfig()
-  const configB = api.resolveWebpackConfig()
+    // 针对不同的目的修改 `configA` 和 `configB`...
+  })
+}
 
-  // 针对不同的目的修改 `configA` 和 `configB`...
-})
+// make sure to specify the default mode for correct env variables
+module.exports.defaultModes = {
+  'my-build': 'production'
+}
 ```
 
 或者，一个插件也可以通过调用 `api.resolveChainableWebpackConfig()` 获得一个新生成的[链式配置](https://github.com/mozilla-neutrino/webpack-chain)：
 
 ``` js
 api.registerCommand('my-build', args => {
-  api.setMode('production')
-
   const configA = api.resolveChainableWebpackConfig()
   const configB = api.resolveChainableWebpackConfig()
 

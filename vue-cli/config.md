@@ -25,14 +25,18 @@ module.exports = {
   // 查阅 https://cn.vuejs.org/v2/guide/installation.html#运行时-编译器-vs-只包含运行时
   compiler: false,
 
+  // babel-loader 默认会跳过 node_modules 依赖。
+  // 通过这个选项可以显式转译一个依赖。
+  transpileDependencies: [/* string or regex */],
+
+  // 是否在模板编译过程中保留元素之间的空白。
+  // 默认值是 `false`，以便减小编译好的代码和更好的性能。
+  preserveWhitepsace: false,
+
   // 调整内部的 webpack 配置。
   // 查阅 https://github.com/vuejs/vue-doc-zh-cn/vue-cli/webpack.md
   chainWebpack: () => {},
   configureWebpack: () => {},
-
-  // vue-loader 选项
-  // 查阅 https://vue-loader.vuejs.org/zh-cn/options.html
-  vueLoader: {},
 
   // 是否为生产环境构建生成 source map？
   productionSourceMap: true,
@@ -43,16 +47,16 @@ module.exports = {
     // 也可以是一个传递给 `extract-text-webpack-plugin` 的选项对象
     extract: true,
 
+    // 为所有的 CSS 及其预处理文件开启 CSS Modules。
+    // 这个选项不会影响 `*.vue` 文件。
+    modules: false,
+
     // 是否开启 CSS source map？
     sourceMap: false,
 
     // 为预处理器的 loader 传递自定义选项。比如传递给
     // sass-loader 时，使用 `{ sass: { ... } }`。
-    loaderOptions: {},
-
-    // 为所有的 CSS 及其预处理文件开启 CSS Modules。
-    // 这个选项不会影响 `*.vue` 文件。
-    modules: false
+    loaderOptions: {}
   },
 
   // 在生产环境下为 Babel 和 TypeScript 使用 `thread-loader`

@@ -8,7 +8,7 @@
 
 - **`vue-cli-service test:e2e`**
 
-  通过 [NightwatchJS](nightwatchjs.org) 运行 e2e 测试
+  通过 [NightwatchJS](https://nightwatchjs.org) 运行 e2e 测试
 
   选项：
 

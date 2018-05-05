@@ -8,16 +8,15 @@
 
 默认使用 Babel 7 + `babel-loader` + [@vue/babel-preset-app](../vue-babel-preset-app/README.md)，但是可以通过 `.babelrc` 配置使用任何其它 Babel 预设选项或插件。
 
-默认情况下，`babel-loader` 只应用在 `src` 和 `tests` 目录下的文件。如果希望显性编译一个依赖的模块，你需要在 `vue.config.js` 中配置 webpack：
+默认情况下，`babel-loader` 会排除 `node_modules` 依赖内部的文件。如果希望显性编译一个依赖的模块，你需要将其添加入 `vue.config.js` 中的 `transpileDependencies` 选项：
 
 ``` js
 module.exports = {
-  chainWebpack: config => {
-    config
-      .rule('js')
-        .include
-          .add(/module-to-transpile/)
-  }
+  transpileDependencies: [
+    // 可以是字符串或正则表达式
+    'my-dep',
+    /other-dep/
+  ]
 }
 ```
 

@@ -25,6 +25,30 @@
   关于所支持的值的更多的信息，请查阅 
   [`GenerateSW`](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin#full_generatesw_config) 或 [`InjectManifest`](https://developers.google.com/web/tools/workbox/modules/workbox-webpack-plugin#full_injectmanifest_config) 的指南。
 
+- **pwa.name**
+
+  - 默认值：`package.json` 的 "name" 字段
+
+    在生成的 HTML 中用作 `apple-mobile-web-app-title` meta 标签的值。注意你需要编辑 `public/manifest.json` 来配合它。
+
+- **pwa.themeColor**
+
+  - 默认值：`'#4DBA87'`
+
+- **pwa.msTileColor**
+
+  - 默认值：`'#000000'`
+
+- **pwa.appleMobileWebAppCapable**
+
+  - 默认值：`'no'`
+
+    这里的默认值是 `'no'` 因为 iOS 11.3 之前都不支持 PWA。更多详情请查阅[这篇文章](https://medium.com/@firt/dont-use-ios-web-app-meta-tag-irresponsibly-in-your-progressive-web-apps-85d70f4438cb)。
+
+- **pwa.appleMobileWebAppStatusBarStyle**
+
+  - 默认值：`'default'`
+
 ### 配置示例
 
 ```js
@@ -32,14 +56,21 @@
 module.exports = {
   // ...其它 vue-cli 插件选项...
   pwa: {
+    name: 'My App',
+    themeColor: '#4DBA87',
+    msTileColor: '#000000',
+    appleMobileWebAppCapable: 'yes',
+    appleMobileWebAppStatusBarStyle: 'black',
+
+    // 配置 workbox 插件
     workboxPluginMode: 'InjectManifest',
     workboxOptions: {
       // swSrc 中 InjectManifest 模式下是必填的。
       swSrc: 'dev/sw.js',
       // ...其它 Workbox 选项...
-    },
-  },
-};
+    }
+  }
+}
 ```
 
 ## 在已创建的项目中安装

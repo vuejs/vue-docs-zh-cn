@@ -6,14 +6,14 @@
 
 ## 注入的命令
 
-- **`vue-cli-service test`**
+- **`vue-cli-service test:unit`**
 
   通过 [mocha-webpack](https://github.com/zinserjan/mocha-webpack) + [chai](http://chaijs.com/) 运行单元测试。
 
   **注意该测试会运行在带有 JSDOM 浏览器环境模拟的 Node.js 中**
 
   ```
-  使用：vue-cli-service test [options] [...files]
+  使用：vue-cli-service test:unit [options] [...files]
 
   选项：
 
@@ -30,13 +30,8 @@
 
   也支持所有的 [mocha-webpack 命令行选项](http://zinserjan.github.io/mocha-webpack/docs/installation/cli-usage.html)。
 
-## 配置
-
-Jest can be configured via `jest.config.js` in your project root, or the `jest` field in `package.json`.？？？
-
 ## 在已创建的项目中安装
 
 ``` sh
-npm install -D @vue/cli-plugin-unit-mocha
-vue invoke unit-mocha
+vue add unit-mocha
 ```

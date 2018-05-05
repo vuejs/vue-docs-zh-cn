@@ -25,11 +25,11 @@
 
 ESLint 可以通过 `.eslintrc` 或 `package.json` 中的 `eslintConfig` 字段进行配置。
 
-`vue.config.js` 中的 `lintOnSave` 选项可以在开发环境下开启通过 `eslint-loader` 在每次保存时执行校验。
+通过 `eslint-loader` 在每次保存时执行校验的选项是默认开启的，你也可以通过 `vue.config.js` 中的 `lintOnSave` 选项将其关闭。
 
 ``` js
 module.exports = {
-  lintOnSave: true
+  lintOnSave: false
 }
 ```
 

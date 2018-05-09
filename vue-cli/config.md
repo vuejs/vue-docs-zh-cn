@@ -33,13 +33,13 @@ module.exports = {
   // 默认值是 `false`，以便减小编译好的代码和更好的性能。
   preserveWhitepsace: false,
 
+  // 是否为生产环境构建生成 source map？
+  productionSourceMap: true,
+
   // 调整内部的 webpack 配置。
   // 查阅 https://github.com/vuejs/vue-doc-zh-cn/vue-cli/webpack.md
   chainWebpack: () => {},
   configureWebpack: () => {},
-
-  // 是否为生产环境构建生成 source map？
-  productionSourceMap: true,
 
   // CSS 相关选项
   css: {
@@ -62,11 +62,6 @@ module.exports = {
   // 在生产环境下为 Babel 和 TypeScript 使用 `thread-loader`
   // 在多核机器下会默认开启。
   parallel: require('os').cpus().length > 1,
-
-  // 是否使用 `autoDLLPlugin` 分割供应的包？
-  // 也可以是一个在 DLL 包中引入的依赖的显性的数组。
-  // 查阅 https://github.com/vuejs/vue-doc-zh-cn/vue-cli/cli-service.md#dll-模式
-  dll: false,
 
   // PWA 插件的选项。
   // 查阅 https://github.com/vuejs/vue-doc-zh-cn/vue-cli-plugin-pwa/README.md

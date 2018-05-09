@@ -58,6 +58,20 @@ console.log(process.env.VUE_APP_SECRET)
 - `NODE_ENV` - 会是 `"development"`、`"production"` 或 `"test"` 中的一个。具体的值取决于应用运行的[模式](#模式)。
 - `BASE_URL` - 会和 `vue.config.js` 中的 `baseUrl` 选项相符，即你的应用会部署到的基础路径。
 
+### Index HTML 中的环境变量
+
+通过 [lodash 模板插入](https://lodash.com/docs/4.17.5#template)，所有解析出来的环境变量在 `public/index.html` 是可用的：
+
+- `<%= VAR %>` 用于非转义插入；
+- `<%- VAR %>` 用于 HTML 转义后的插入；
+- `<% expression %>` 用于 JavaScript 控制流。
+
+举个例子，为了引用被拷贝到 `public` 根目录的静态资源，你会用到 `BASE_URL` 变量：
+
+``` html
+<link rel="shortcut icon" href="<%= BASE_URL %>favicon.ico">
+```
+
 ### 只在本地有效的变量
 
 有的时候你可能有一些不应该提交到代码仓库中的变量，尤其是当你的项目托管在公共仓库时。这种情况下你应该使用一个 `.env.local` 文件取而代之。本地环境文件默认会被忽略，且出现在 `.gitignore` 中。

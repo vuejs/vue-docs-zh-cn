@@ -6,7 +6,6 @@
 - [构建](#构建)
   - [缓存和并行模式](#缓存和并行模式)
   - [构建为一个库或 Web Component](#构建为一个库或-web-component)
-  - [DLL 模式](#dll-模式)
 - [审查](#审查)
 - [查阅所有可用的命令](#查阅所有可用的命令)
 
@@ -117,33 +116,6 @@ Options:
 #### 构建为一个库或 Web Component
 
 我们也有可能在你的项目中将任何组件构建成为一个库或 web component。请在[构建目标](./build-targets.md)查阅更多细节。
-
-#### DLL 模式
-
-如果你的应用有大量的依赖库，你可以开启 DLL 模式以提升构建的性能。DLL 模式会将你的依赖构建到一个独立的供应包，这个包会在未来的构建过程中被复用直到你的依赖发生变化。
-
-想要开启 DLL 模式，请在 `vue.config.js` 中设置 `dll` 选项为 `true`：
-
-``` js
-// vue.config.js
-module.exports = {
-  dll: true
-}
-```
-
-这会默认将**`package.json` 内 `dependencies` 字段列出的所有模块**构建到这个 DLL 包。正确列出你的依赖非常重要，否则它最终可能会引入不必要的代码。
-
-如果你希望能更细粒度的控制向 DLL 包引入哪些模块，你也可以在 `dll` 选项中提供一个模块的数组：
-
-``` js
-// vue.config.js
-module.exports = {
-  dll: [
-    'dep-a',
-    'dep-b/some/nested/file.js'
-  ]
-}
-```
 
 ### 审查
 

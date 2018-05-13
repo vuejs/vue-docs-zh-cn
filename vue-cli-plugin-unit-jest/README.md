@@ -24,5 +24,5 @@ Jest 可以通过你项目根目录中的 `jest.config.js` 文件或 `package.js
 ## 在已创建的项目中安装
 
 ``` sh
-vue add unit-jest
+vue add @vue/unit-jest
 ```

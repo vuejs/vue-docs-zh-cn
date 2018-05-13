@@ -29,10 +29,6 @@ module.exports = {
   // 通过这个选项可以显式转译一个依赖。
   transpileDependencies: [/* string or regex */],
 
-  // 是否在模板编译过程中保留元素之间的空白。
-  // 默认值是 `false`，以便减小编译好的代码和更好的性能。
-  preserveWhitepsace: false,
-
   // 是否为生产环境构建生成 source map？
   productionSourceMap: true,
 
@@ -47,16 +43,16 @@ module.exports = {
     // 也可以是一个传递给 `extract-text-webpack-plugin` 的选项对象
     extract: true,
 
-    // 为所有的 CSS 及其预处理文件开启 CSS Modules。
-    // 这个选项不会影响 `*.vue` 文件。
-    modules: false,
-
     // 是否开启 CSS source map？
     sourceMap: false,
 
     // 为预处理器的 loader 传递自定义选项。比如传递给
     // sass-loader 时，使用 `{ sass: { ... } }`。
-    loaderOptions: {}
+    loaderOptions: {},
+
+    // 为所有的 CSS 及其预处理文件开启 CSS Modules。
+    // 这个选项不会影响 `*.vue` 文件。
+    modules: false
   },
 
   // 在生产环境下为 Babel 和 TypeScript 使用 `thread-loader`

@@ -13,11 +13,23 @@ Vue CLI 内部使用了 PostCSS，并默认开启了 [autoprefixer](https://gith
 
 你可以通过 `<style module>` 以开箱即用的方式[在 `*.vue` 文件中使用 CSS Modules](https://vue-loader.vuejs.org/zh-cn/features/css-modules.html)。
 
-任何名字以 `.module.(css|sass|scss|less|styl|stylus)` 结尾的文件都会作为独立的样式文件被 CSS Modules 处理。
+为了在 JavaScript 中作为 CSS Modules 导入 CSS 或其它预处理文件，该文件应该以 `.module.(css|less|sass|scss|styl)` 结尾：
 
-如果你希望能够不带 `.module` 后缀使用 CSS Modules，你可以在 `vue.config.js` 中设置 `css: { modules: true }`。该选项不会影响 `*.vue` 文件。
+``` js
+import styles from './foo.module.css'
+// 所有支持的预处理器都一样工作
+import sassStyles from './foo.module.scss'
+```
 
-如果你想要自定义 CSS Modules 类名的输出格式，你可以在 `vue.config.js` 中设置 `css: { localIdentName: [name]__[local]--[hash:base64:5]}` 这样的选项。
+另外，你可以通过一个 `?module` 的 `resourceQuery` 显式地导入一个文件，这样你就可以在文件名中丢弃 `.module`：
+
+``` js
+import styles from './foo.css?module'
+// 所有支持的预处理器都一样工作
+import sassStyles from './foo.scss?module'
+```
+
+如果你希望自定义生成的 CSS Modules 的类名，可以通过 `vue.config.js` 中的 `css.localIdentName` 选项来实现。
 
 ### 预处理器
 
@@ -53,3 +65,5 @@ module.exports = {
   }
 }
 ```
+
+这样做比手动放入具体的 loader 里更推荐，因为这些选项将会被分享到所有相关的规则中。

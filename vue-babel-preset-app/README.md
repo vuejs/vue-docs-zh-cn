@@ -50,25 +50,25 @@
 
 为 `babel-preset-env` 显性设置 `useBuiltIns` 选项。
 
-The default value is `'usage'`, which adds imports to polyfills based on the usage in transpiled code. For example, if you use `Object.assign` in your code, the corresponding polyfill will be auto-imported if your target environment does not supports it.
+默认值是 `'usage'`，它会基于被转译代码的使用情况导入相应的 polyfill。例如，你在代码里使用了 `Object.assign`，那么如果你的目标环境不支持它，对应的 polyfill 就会被自动导入。
 
-Note that the usage detection does not apply to your dependencies (which are excluded by `cli-plugin-babel` by default). If one of your dependencies need polyfills, you have a few options:
+注意用法侦测并不适用于你的依赖 (它们默认被 `cli-plugin-babel` 排除在外)。如果你的一个依赖需要 polyfill，可以选择：
 
-1. **If the dependency is written in an ES version that your target environments do not support:** Add that dependency to the `transpileDependencies` option in `vue.config.js`. This would enable both syntax transforms and usage-based polyfill detection for that dependency.
+1. **如果这个依赖是用一个你的目标环境不支持的 ES 版本撰写的：**请把那个依赖添加到 `vue.config.js` 的 `transpileDependencies` 选项中。它会为这个依赖开启语法转换和基于用法的 polyfill 侦测。
 
-2. **If the dependency ships ES5 code and explicitly lists the polyfills needed:** you can pre-include the needed polyfills using the [polyfills](#polyfills) option for this preset.
+2. **如果这个依赖交付 ES5 代码并显式地列出了需要的 polyfill：**你可以使用 [polyfills](#polyfills) 选项为这个预设选项预包含所需要的 polyfill。
 
-3. **If the dependency ships ES5 code, but uses ES6+ features without explicitly listing polyfill requirements (e.g. Vuetify):** Use `useBuiltIns: 'entry'` and then add `import '@babel/polyfill'` to your entry file. This will import **ALL** polyfills based on your `browserslist` targets so that you don't need to worry about dependency polyfills anymore, but will likely increase your final bundle size with some unused polyfills.
+3. **如果这个依赖交付 ES5 代码，但是使用了没有显性列出的 ES6+ 特性的 polyfill 需求 (例如 Vuetify)：**请使用 `useBuiltIns: 'entry'` 并将 `import '@babel/polyfill'` 添加到你的入口文件中。它会基于你的 `browserlist` 目标导入**所有的** polyfill，所以你无需再担心任何依赖中的 polyfill，不过因为它加入了一些未被使用的 polyfill，最终的包体积会增加。
 
-See [babel-preset-env docs](https://github.com/babel/babel/tree/master/packages/babel-preset-env#usebuiltins) for more details.
+查阅 [babel-preset-env docs](https://github.com/babel/babel/tree/master/packages/babel-preset-env#usebuiltins) 了解更多细节。
 
 ### polyfills
 
-- Default: `['es6.promise']`
+- 默认值：`['es6.promise']`
 
-A list of [core-js](https://github.com/zloirock/core-js) polyfills to pre-include when using `useBuiltIns: 'usage'`. **These polyfills are automatically excluded if they are not needed for your target environments**.
+当使用 `useBuiltIns: 'usage'` 的时候预包含的一份 [core-js](https://github.com/zloirock/core-js) polyfill 的列表。**如果你的目标环境不需要，这些 polyfill 会自动被排除。**
 
-Use this option when you have 3rd party dependencies that are not processed by Babel but have specific polyfill requirements (e.g. Axios and Vuex require Promise support).
+当你拥有未被 Babel 处理但是需要特定的 polyfill 的第三方依赖时 (例如 Axios 和 Vuex 需要 Promise 的支持) 请使用这个选项。
 
 ### jsx
 

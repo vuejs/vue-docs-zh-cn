@@ -35,5 +35,5 @@
 ## 在已创建的项目中安装
 
 ``` sh
-vue add e2e-nightwatch
+vue add @vue/e2e-nightwatch
 ```

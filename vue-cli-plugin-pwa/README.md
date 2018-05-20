@@ -76,8 +76,7 @@ module.exports = {
 ## 在已创建的项目中安装
 
 ``` sh
-npm install -D @vue/cli-plugin-pwa
-vue invoke pwa
+vue add @vue/pwa
 ```
 
 ## 注入的 webpack-chain 规则

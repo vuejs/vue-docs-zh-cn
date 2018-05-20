@@ -27,8 +27,7 @@ TypeScript 可以通过 `tsconfig.json` 进行配置。
 ## 在已创建的项目中安装
 
 ``` sh
-npm install -D @vue/cli-plugin-typescript
-vue invoke typescript
+vue add @vue/typescript
 ```
 
 ## 注入的 webpack-chain 规则

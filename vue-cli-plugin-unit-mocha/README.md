@@ -33,5 +33,5 @@
 ## 在已创建的项目中安装
 
 ``` sh
-vue add unit-mocha
+vue add @vue/unit-mocha
 ```

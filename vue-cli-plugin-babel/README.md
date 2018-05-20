@@ -31,8 +31,7 @@ module.exports = {
 ## 在已创建的项目中安装
 
 ``` sh
-npm install -D @vue/cli-plugin-babel
-vue invoke babel
+vue add @vue/babel
 ```
 
 ## 注入的 webpack-chain 规则

@@ -18,7 +18,7 @@ TypeScript 可以通过 `tsconfig.json` 进行配置。
 
 ## 缓存
 
-[cache-loader](https://github.com/webpack-contrib/cache-loader) 默认开启，被缓存的东西存储在 `<projectRoot>/node_modules/.cache/cache-loader`。
+[cache-loader](https://github.com/webpack-contrib/cache-loader) 默认开启，被缓存的东西存储在 `<projectRoot>/node_modules/.cache/ts-loader`。
 
 ## 并行执行
 
@@ -36,5 +36,4 @@ vue add @vue/typescript
 - `config.rule('ts').use('ts-loader')`
 - `config.rule('ts').use('babel-loader')` (当配合 `@vue/cli-plugin-babel` 使用时)
 - `config.rule('ts').use('cache-loader')`
-- `config.rule('ts').use('thread-loader')`
 - `config.plugin('fork-ts-checker')`

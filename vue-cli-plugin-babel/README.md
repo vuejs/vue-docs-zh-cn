@@ -22,7 +22,7 @@ module.exports = {
 
 ## 缓存
 
-[cache-loader](https://github.com/webpack-contrib/cache-loader) 默认开启，被缓存的东西存储在 `<projectRoot>/node_modules/.cache/cache-loader`。
+[cache-loader](https://github.com/webpack-contrib/cache-loader) 默认开启，被缓存的东西存储在 `<projectRoot>/node_modules/.cache/babel-loader`。
 
 ## 并行执行
 
@@ -39,4 +39,3 @@ vue add @vue/babel
 - `config.rule('js')`
 - `config.rule('js').use('babel-loader')`
 - `config.rule('js').use('cache-loader')`
-- `config.rule('js').use('thread-loader')`

@@ -104,6 +104,7 @@ Options:
   --dest    指定输出目录 (默认值：`dist`)
   --target  app | lib | wc | wc-async (默认值：`app`)
   --name    库或 web-component 模式下的名字 (默认值：`package.json` 中的 `name` 字段或入口文件名)
+  --watch   watch for changes
 ```
 
 `vue-cli-service build` 会在 `dist/` 目录生成一个可用于生产环境的包，这个包会最小化 JS/CSS/HTML 并为了更好的缓存效果对包进行自动分块。分块的清单会内联到 HTML 中。

@@ -33,6 +33,10 @@ Cypress 为运行 e2e 测试提供一套富交互界面，但是目前只支持�
 
 我们已经预配置了 Cypress 在 `<projectRoot>/test/e2e` 放置大多数的 e2e 测试的相关文件。你可以查阅[如何通过 `cypress.json` 配置 Cypress](https://docs.cypress.io/guides/references/configuration.html#Options)。
 
+## 环境变量
+
+Cypress 不会和 `vue-cli` 为你的[应用代码](../vue-cli/env.md#在客户端侧代码中使用环境变量)一样为你的测试文件加载 `.env` 文件。Cypress 支持一些[定义环境变量](https://docs.cypress.io/guides/guides/environment-variables.html#)的方式，但是最简单的一种就是使用 `.json` 文件 (`cypress.json` 或 `cypress.env.json`) 定义环境变量。注意这些变量是可以通过 `Cypress.env` 函数访问到的，而不是惯用的 `process.env` 对象。
+
 ## 在已创建的项目中安装
 
 ``` sh

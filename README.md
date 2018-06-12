@@ -10,7 +10,7 @@
 * [Vue Loader](https://vue-loader.vuejs.org/zh-cn/)
 * [Vuex](https://vuex.vuejs.org/zh-cn/)
 * [Vue Router](https://router.vuejs.org/zh-cn/)
-* [Vue Test Utils](https://vue-test-utils.vuejs.org/zh-cn/)
+* [Vue Test Utils](https://vue-test-utils.vuejs.org/zh/)
 * [Vue SSR](https://ssr.vuejs.org/zh/)
 * [vue-rx](https://github.com/vuejs/vue-rx/blob/master/README-CN.md)
 * [VuePress](https://vuepress.vuejs.org/zh/)

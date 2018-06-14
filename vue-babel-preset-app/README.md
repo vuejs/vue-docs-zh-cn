@@ -6,7 +6,7 @@
 
 ## 包含的内容
 
-- [babel-preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env)
+- [@babel/preset-env](https://new.babeljs.io/docs/en/next/babel-preset-env.html)
   - `modules: false`
     - 在 Jest 测试中会自动设置为 `'commonjs'`
   - [`useBuiltIns: 'usage'`](#usebuiltins)
@@ -60,7 +60,7 @@
 
 3. **如果这个依赖交付 ES5 代码，但是使用了没有显性列出的 ES6+ 特性的 polyfill 需求 (例如 Vuetify)：**请使用 `useBuiltIns: 'entry'` 并将 `import '@babel/polyfill'` 添加到你的入口文件中。它会基于你的 `browserlist` 目标导入**所有的** polyfill，所以你无需再担心任何依赖中的 polyfill，不过因为它加入了一些未被使用的 polyfill，最终的包体积会增加。
 
-查阅 [babel-preset-env docs](https://github.com/babel/babel/tree/master/packages/babel-preset-env#usebuiltins) 了解更多细节。
+查阅 [@babel/preset-env 文档](https://new.babeljs.io/docs/en/next/babel-preset-env.html#usebuiltins-usage)了解更多细节。
 
 ### polyfills
 

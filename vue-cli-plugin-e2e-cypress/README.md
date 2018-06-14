@@ -27,7 +27,10 @@ Cypress 为运行 e2e 测试提供一套富交互界面，但是目前只支持�
   -s, --spec (只适用于无头模式) 运行一个明确的 spec 文件。默认是 "all"
   ```
 
-  额外的，[支持所有 Cypress CLI `cypress run` 的选项](https://docs.cypress.io/guides/guides/command-line.html#cypress-run).
+  额外的：
+
+  - 在 GUI 模式下，[支持所有 Cypress CLI `cypress open` 的选项](https://docs.cypress.io/guides/guides/command-line.html#cypress-open)
+  - 在 `--headless` 模式下，[支持所有 Cypress CLI `cypress run` 的选项](https://docs.cypress.io/guides/guides/command-line.html#cypress-run)
 
 ## 配置
 
@@ -35,7 +38,7 @@ Cypress 为运行 e2e 测试提供一套富交互界面，但是目前只支持�
 
 ## 环境变量
 
-Cypress 不会和 `vue-cli` 为你的[应用代码](../vue-cli/env.md#在客户端侧代码中使用环境变量)一样为你的测试文件加载 `.env` 文件。Cypress 支持一些[定义环境变量](https://docs.cypress.io/guides/guides/environment-variables.html#)的方式，但是最简单的一种就是使用 `.json` 文件 (`cypress.json` 或 `cypress.env.json`) 定义环境变量。注意这些变量是可以通过 `Cypress.env` 函数访问到的，而不是惯用的 `process.env` 对象。
+Cypress 不会和 `vue-cli` 为你的[应用代码](https://cli.vuejs.org/zh/guide/mode-and-env.html#在客户端侧代码中使用环境变量)一样为你的测试文件加载 `.env` 文件。Cypress 支持一些[定义环境变量](https://docs.cypress.io/guides/guides/environment-variables.html#)的方式，但是最简单的一种就是使用 `.json` 文件 (`cypress.json` 或 `cypress.env.json`) 定义环境变量。注意这些变量是可以通过 `Cypress.env` 函数访问到的，而不是惯用的 `process.env` 对象。
 
 ## 在已创建的项目中安装
 

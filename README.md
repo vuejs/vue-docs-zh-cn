@@ -12,12 +12,13 @@
 * [Vue Router](https://router.vuejs.org/zh-cn/)
 * [Vue Test Utils](https://vue-test-utils.vuejs.org/zh-cn/)
 * [Vue SSR](https://ssr.vuejs.org/zh/)
+* [Vue CLI](https://cli.vuejs.org/zh/) (wip)
 * [vue-rx](https://github.com/vuejs/vue-rx/blob/master/README-CN.md)
 * [VuePress](https://vuepress.vuejs.org/zh/)
 
 ### 集中放置在该仓库的文档
 
-* [Vue CLI](./vue-cli/README.md) - [英文原版](https://github.com/vuejs/vue-cli/blob/dev/docs/README.md)
+* [Vue CLI](./vue-cli/README.md) (停止维护，未来会更新到 https://cli.vuejs.org/zh/) - [英文原版](https://github.com/vuejs/vue-cli/blob/dev/docs/README.md)
   * [@vue/cli-init](./vue-cli-init/README.md) - [英文原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-init/README.md)
   * [@vue/cli-service-global](./vue-cli-service-global/README.md) - [英文原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-service-global/README.md)
   * [@vue/cli-plugin-babel](./vue-cli-plugin-babel/README.md) - [英文原版](https://github.com/vuejs/vue-cli/tree/dev/packages/\@vue/cli-plugin-babel/README.md)

@@ -65,7 +65,7 @@ module.exports = {
     // 配置 workbox 插件
     workboxPluginMode: 'InjectManifest',
     workboxOptions: {
-      // swSrc 中 InjectManifest 模式下是必填的。
+      // InjectManifest 模式下 swSrc 是必填的。
       swSrc: 'dev/sw.js',
       // ...其它 Workbox 选项...
     }

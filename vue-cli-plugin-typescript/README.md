@@ -10,6 +10,8 @@
 
 TypeScript 可以通过 `tsconfig.json` 进行配置。
 
+从 `3.0.0-rc.6` 起，`typescript` 会改为一个这个包的 peer dependency，所以你可以通过更新你项目中的 `package.json` 来指定 TypeScript 的版本。
+
 这个插件可以配合 `@vue/cli-plugin-babel` 使用。当使用 Babel 时，该插件将会输出 ES2015 并将其它基于浏览器目标的自动的 polyfill 委托给 Babel。
 
 ## 注入的命令

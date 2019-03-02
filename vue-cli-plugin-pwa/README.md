@@ -4,6 +4,13 @@
 
 > vue-cli 的 pwa 插件
 
+<!-- todo translation -->
+The service worker added with this plugin is only enabled in the production environment (e.g. only if you run `npm run build` or `yarn build`). Enabling service worker in a development mode is not a recommended practice, because it can lead to the situation when previously cached assets are used and the latest local changes are not included.
+
+Instead, in the development mode the `noopServiceWorker.js` is included. This service worker file is effectively a 'no-op' that will reset any previous service worker registered for the same host:port combination.
+
+If you need to test a service worker locally, build the application and run a simple HTTP-server from your build directory. It's recommended to use a browser incognito window to avoid complications with your browser cache.
+
 ## 配置
 
 配置是通过 `vue.config.js` 的 `pwa` 属性或 `package.json` 中的 `"pwa"` 字段处理的。
@@ -48,6 +55,35 @@
 - **pwa.appleMobileWebAppStatusBarStyle**
 
   - 默认值：`'default'`
+
+<!-- todo translation -->
+- **pwa.assetsVersion**
+
+  - Default: `''`
+
+    This option is used if you need to add a version to your icons and manifest, against browser’s cache. This will append `?v=<pwa.assetsVersion>` to the URLs of the icons and manifest.
+
+- **pwa.manifestPath**
+
+  - Default: `'manifest.json'`
+
+    The path of app’s manifest.
+
+- **pwa.iconPaths**
+
+  - Defaults:
+
+    ```js
+    {
+      favicon32: 'img/icons/favicon-32x32.png',
+      favicon16: 'img/icons/favicon-16x16.png',
+      appleTouchIcon: 'img/icons/apple-touch-icon-152x152.png',
+      maskIcon: 'img/icons/safari-pinned-tab.svg',
+      msTileImage: 'img/icons/msapplication-icon-144x144.png'
+    }
+    ```
+
+    Change these values to use different paths for your icons.
 
 ### 配置示例
 

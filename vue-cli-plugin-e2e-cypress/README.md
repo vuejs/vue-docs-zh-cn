@@ -32,6 +32,10 @@ Cypress 为运行 e2e 测试提供一套富交互界面，但是目前只支持�
   - 在 GUI 模式下，[支持所有 Cypress CLI `cypress open` 的选项](https://docs.cypress.io/guides/guides/command-line.html#cypress-open)
   - 在 `--headless` 模式下，[支持所有 Cypress CLI `cypress run` 的选项](https://docs.cypress.io/guides/guides/command-line.html#cypress-run)
 
+  示例：
+
+  - 为一个指定文件在 headless 下运行 Cypress：`vue-cli-service test:e2e --headless --spec tests/e2e/specs/actions.spec.js`
+
 ## 配置
 
 我们已经预配置了 Cypress 在 `<projectRoot>/test/e2e` 放置大多数的 e2e 测试的相关文件。你可以查阅[如何通过 `cypress.json` 配置 Cypress](https://docs.cypress.io/guides/references/configuration.html#Options)。

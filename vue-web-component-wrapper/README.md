@@ -10,7 +10,7 @@
 
 - **如果目标浏览器原生支持 ES2015 但不原生支持 Web Components：**
 
-  你还需要 [Shady DOM + 自定义元素的 polyfill](https://github.com/webcomponents/webcomponentsjs/blob/master/webcomponents-sd-ce.js).
+  你还需要 [Shady DOM + 自定义元素的 polyfill](https://github.com/webcomponents/webcomponentsjs/).
 
   请到 caniuse.com 查阅 [Custom Elements v1](https://caniuse.com/#feat=custom-elementsv1) 和 [Shadow DOM v1](https://caniuse.com/#feat=shadowdomv1) 的支持情况。
 

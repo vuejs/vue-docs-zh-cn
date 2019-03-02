@@ -17,12 +17,11 @@
 
   支持所有的 [Jest 命令行选项](https://facebook.github.io/jest/docs/en/cli.html)。
 
-<!-- todo translation -->
-## Debugging Tests
+## 调试测试代码
 
-Note that directly running `jest` will fail because the Babel preset requires hints to make your code work in Node.js, so you must run your tests with `vue-cli-service test:unit`.
+注意直接运行 `jest` 会失败，因为 Babel preset 需要提示 (hint) 才能让代码在 Node.js 中运行，所以你必须通过 `vue-cli-service test:unit` 来运行测试代码。
 
-If you want to debug your tests via the Node inspector, you can run the following:
+如果你想要通过 Node inspector 调试你的测试代码，可以运行如下代码：
 
 ``` sh
 # macOS or linux

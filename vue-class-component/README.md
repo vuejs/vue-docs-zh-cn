@@ -28,7 +28,7 @@
 
 ### 示例
 
-接下来的例子是在 Babel 中写的。TypeScript 的版本[在项目的 `example` 目录中](https://github.com/vuejs/vue-class-component/blob/master/example/App.vue)。
+接下来的例子是在 Babel 中写的。TypeScript 的版本[在项目的 `example` 目录中](https://github.com/vuejs/vue-class-component/blob/master/example/src/App.vue)。
 
 ``` vue
 <template>
@@ -91,7 +91,7 @@ import Component from 'vue-class-component'
 
 // 你可以像声明一个组件一样声明混入。
 @Component
-export class MyMixin extends Vue {
+export default class MyMixin extends Vue {
   mixinValue = 'Hello'
 }
 ```
@@ -171,12 +171,14 @@ import Component from 'vue-class-component'
 class MyComp extends Vue {
   // 这个 class 组件现在处理了 beforeRouteEnter
   // 和 beforeRouteLeave 作为 Vue Router 的钩子
-  beforeRouteEnter () {
+  beforeRouteEnter (to, from, next) {
     console.log('beforeRouteEnter')
+    next() // 需要被调用以确认完成该导航
   }
 
-  beforeRouteLeave () {
+  beforeRouteLeave (to, from, next) {
     console.log('beforeRouteLeave')
+    next() // 需要被调用以确认完成该导航
   }
 }
 ```

@@ -8,23 +8,33 @@ This package contains lower level utilities that you can use if you are writing 
 
 The API surface is intentionally minimal - the goal is to reuse as much as possible while being as flexible as possible.
 
+## Why isn't `vue-template-compiler` a peerDependency?
+
+Since this package is more often used as a low-level utility, it is usually a transitive dependency in an actual Vue project. It is therefore the responsibility of the higher-level package (e.g. `vue-loader`) to inject `vue-template-compiler` via options when calling the `parse` and `compileTemplate` methods.
+
+Not listing it as a peer depedency also allows tooling authors to use a non-default template compiler instead of `vue-template-compiler` without having to include it just to fullfil the peer dep requirement.
+
 ## API
 
 ### parse(ParseOptions): SFCDescriptor
 
-Parse raw single file component source into a descriptor with source maps.
+Parse raw single file component source into a descriptor with source maps. The actual compiler (`vue-template-compiler`) must be passed in via the `compiler` option so that the specific version used can be determined by the end user.
 
 ``` ts
 interface ParseOptions {
   source: string
   filename?: string
+  compiler: VueTemplateCompiler
+  // https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler#compilerparsecomponentfile-options
+  // default: { pad: 'line' }
+  compilerParseOptions?: VueTemplateCompilerParseOptions
   sourceRoot?: string
   needMap?: boolean
 }
 
 interface SFCDescriptor {
-  template?: SFCBlock
-  script?: SFCBlock
+  template: SFCBlock | null
+  script: SFCBlock | null
   styles: SFCBlock[]
   customBlocks: SFCCustomBlock[]
 }
@@ -32,10 +42,10 @@ interface SFCDescriptor {
 interface SFCCustomBlock {
   type: string
   content: string
-  attrs: { [key: string]: string }
+  attrs: { [key: string]: string | true }
   start: number
   end: number
-  map: RawSourceMap
+  map?: RawSourceMap
 }
 
 interface SFCBlock extends SFCCustomBlock {
@@ -48,7 +58,7 @@ interface SFCBlock extends SFCCustomBlock {
 
 ### compileTemplate(TemplateCompileOptions): TemplateCompileResults
 
-Takes raw template source and compile it into JavaScript code. The actual compiler (`vue-template-compiler`) must be passed so that the specific version used can be determined by the end user.
+Takes raw template source and compile it into JavaScript code. The actual compiler (`vue-template-compiler`) must be passed in via the `compiler` option so that the specific version used can be determined by the end user.
 
 It can also optionally perform pre-processing for any templating engine supported by [consolidate](https://github.com/tj/consolidate.js/).
 
@@ -57,8 +67,9 @@ interface TemplateCompileOptions {
   source: string
   filename: string
 
-  // See https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler
   compiler: VueTemplateCompiler
+  https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler#compilercompiletemplate-options
+  // default: {}
   compilerOptions?: VueTemplateCompilerOptions
 
   // Template preprocessor
@@ -72,6 +83,7 @@ interface TemplateCompileOptions {
   //   source: 'src',
   //   img: 'src',
   //   image: 'xlink:href'
+  //   use: 'xlink:href'
   // }
   transformAssetUrls?: AssetURLOptions | boolean
 
@@ -81,6 +93,10 @@ interface TemplateCompileOptions {
   isProduction?: boolean  // default: false
   isFunctional?: boolean  // default: false
   optimizeSSR?: boolean   // default: false
+
+  // Whether prettify compiled render function or not (development only)
+  // default: true
+  prettify?: boolean
 }
 
 interface TemplateCompileResult {
@@ -118,6 +134,10 @@ interface StyleCompileOptions {
   map?: any
   scoped?: boolean
   trim?: boolean
+  preprocessLang?: string
+  preprocessOptions?: any
+  postcssOptions?: any
+  postcssPlugins?: any[]
 }
 
 interface StyleCompileResults {
@@ -127,3 +147,7 @@ interface StyleCompileResults {
   errors: string[]
 }
 ```
+
+### compileStyleAsync(StyleCompileOptions)
+
+Same as `compileStyle(StyleCompileOptions)` but it returns a Promise resolving to `StyleCompileResults`. It can be used with async postcss plugins.

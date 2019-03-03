@@ -4,7 +4,7 @@
 
 > 这个包是自动生成的。如果想创建 pull request 请查阅 [src/platforms/web/entry-compiler.js](https://github.com/vuejs/vue/tree/dev/src/platforms/web/entry-compiler.js)。
 
-这个包可以被用来将 Vue 2.0 的模板预编译为渲染函数以避免运行时不必要的编译开销和 CSP 的限制。你只在撰写特定需求的构建工具时用得到它。大多数情况下你应该使用 [`vue-loader`](https://github.com/vuejs/vue-loader) 或 [`vueify`](https://github.com/vuejs/vueify) 取而代之，二者内部都用到了这个包。
+这个包可以被用来将 Vue 2.0 的模板预编译为渲染函数以避免运行时不必要的编译开销和 CSP 的限制。大多数情况下你应该使用 [`vue-loader`](https://github.com/vuejs/vue-loader)，你只在为特殊需求撰写构建工具时需要独立使用它。
 
 ## 安装
 

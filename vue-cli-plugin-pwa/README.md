@@ -4,12 +4,11 @@
 
 > vue-cli 的 pwa 插件
 
-<!-- todo translation -->
-The service worker added with this plugin is only enabled in the production environment (e.g. only if you run `npm run build` or `yarn build`). Enabling service worker in a development mode is not a recommended practice, because it can lead to the situation when previously cached assets are used and the latest local changes are not included.
+该插件加入的 service worker 只会在生产环境下 (即只在运行 `npm run build` 或 `yarn build` 时) 开启。在开发环境下开启 service worker 并不推荐，因为它会导致之前的缓存资源被使用而未包含最新的本地改变。
 
-Instead, in the development mode the `noopServiceWorker.js` is included. This service worker file is effectively a 'no-op' that will reset any previous service worker registered for the same host:port combination.
+取而代之的是，在开发环境下引入 `noopServiceWorker.js`。这个 service worker 文件会重置之前在相同主机和端口注册过的任何 service worker，有效地达到了 no-op 的目的。
 
-If you need to test a service worker locally, build the application and run a simple HTTP-server from your build directory. It's recommended to use a browser incognito window to avoid complications with your browser cache.
+如果你需要本地测试一个 service worker，构建应用并在构建目录运行一个简单的 HTTP 服务器。这里推荐使用浏览器隐私模式以避免浏览器缓存带来的问题。
 
 ## 配置
 
@@ -56,22 +55,21 @@ If you need to test a service worker locally, build the application and run a si
 
   - 默认值：`'default'`
 
-<!-- todo translation -->
 - **pwa.assetsVersion**
 
-  - Default: `''`
+  - 默认值：`''`
 
-    This option is used if you need to add a version to your icons and manifest, against browser’s cache. This will append `?v=<pwa.assetsVersion>` to the URLs of the icons and manifest.
+    该选项会为图标和 manifest 文件的 URL 添加 `?v=<pwa.assetsVersion>`。以便在需要的时候应对浏览器缓存。
 
 - **pwa.manifestPath**
 
-  - Default: `'manifest.json'`
+  - 默认值：`'manifest.json'`
 
-    The path of app’s manifest.
+    应用的 manifest 文件路径。
 
 - **pwa.iconPaths**
 
-  - Defaults:
+  - 默认值：
 
     ```js
     {
@@ -83,7 +81,7 @@ If you need to test a service worker locally, build the application and run a si
     }
     ```
 
-    Change these values to use different paths for your icons.
+    改变这些值可以为图标设置不同的路径。
 
 ### 配置示例
 

@@ -2,23 +2,24 @@
 
 [英文原版](https://github.com/vuejs/component-compiler-utils)
 
-> Lower level utilities for compiling Vue single file components
+> 用来编译 Vue 单文件组件的底层实用工具
 
-This package contains lower level utilities that you can use if you are writing a plugin / transform for a bundler or module system that compiles Vue single file components into JavaScript. It is used in [vue-loader](https://github.com/vuejs/vue-loader) version 15 and above.
+这个包包含了底层的实用工具，对于将 Vue 单文件组件编译为 JavaScript 的打包器或模块系统来说，为其撰写插件或转换规则是用得到这些实用工具的。
 
-The API surface is intentionally minimal - the goal is to reuse as much as possible while being as flexible as possible.
+该 API 的外表是刻意最小化的，目的是在尽可能灵活的同时尽可能多地被重用。
 
-## Why isn't `vue-template-compiler` a peerDependency?
+## 为什么 `vue-template-compiler` 不是一个 `peerDependency`？
 
 Since this package is more often used as a low-level utility, it is usually a transitive dependency in an actual Vue project. It is therefore the responsibility of the higher-level package (e.g. `vue-loader`) to inject `vue-template-compiler` via options when calling the `parse` and `compileTemplate` methods.
+因为这个包更多地作为一个底层实用工具被使用，在实际的 Vue 工程中常常是一个可传递的依赖。这也是顶层包 (例如 `vue-loader`) 在调用 `parse` 和 `compileTemplate` 方法时将 `vue-template-compiler` 通过选项注入的原因。
 
-Not listing it as a peer depedency also allows tooling authors to use a non-default template compiler instead of `vue-template-compiler` without having to include it just to fullfil the peer dep requirement.
+没有将其列为同级依赖也使得工具作者可以将 `vue-template-compiler` 换为一个非默认的模板编译器，而不需要仅仅为了填补同级依赖而引入它。
 
 ## API
 
 ### parse(ParseOptions): SFCDescriptor
 
-Parse raw single file component source into a descriptor with source maps. The actual compiler (`vue-template-compiler`) must be passed in via the `compiler` option so that the specific version used can be determined by the end user.
+将单文件组件的源码解析为一个带有 source map 的描述器。实际的编译器 (`vue-template-compiler`) 必须通过 `compiler` 选项被传入，这样具体的版本号就可以被最终用户指定。
 
 ``` ts
 interface ParseOptions {
@@ -58,9 +59,9 @@ interface SFCBlock extends SFCCustomBlock {
 
 ### compileTemplate(TemplateCompileOptions): TemplateCompileResults
 
-Takes raw template source and compile it into JavaScript code. The actual compiler (`vue-template-compiler`) must be passed in via the `compiler` option so that the specific version used can be determined by the end user.
+将模板的源码编译为 JavaScript 代码。实际的编译器 (`vue-template-compiler`) 必须通过 `compiler` 选项被传入，这样具体的版本号就可以被最终用户指定。
 
-It can also optionally perform pre-processing for any templating engine supported by [consolidate](https://github.com/tj/consolidate.js/).
+它也可以通过 [consolidate](https://github.com/tj/consolidate.js/) 可选地为任何模板引擎进行预处理。
 
 ``` ts
 interface TemplateCompileOptions {
@@ -76,8 +77,8 @@ interface TemplateCompileOptions {
   preprocessLang?: string
   preprocessOptions?: any
 
-  // Transform asset urls found in the template into `require()` calls
-  // This is off by default. If set to true, the default value is
+  // 将模板里找到的资源 URL 转换为 `require()` 调用
+  // 这个选项默认是关闭的。如果设置为 true，则默认值为：
   // {
   //   video: ['src', 'poster'],
   //   source: 'src',
@@ -87,15 +88,15 @@ interface TemplateCompileOptions {
   // }
   transformAssetUrls?: AssetURLOptions | boolean
 
-  // For vue-template-es2015-compiler, which is a fork of Buble
+  // 为 vue-template-es2015-compiler，即一个 Buble 的 fork，指定的选项
   transpileOptions?: any
 
   isProduction?: boolean  // default: false
   isFunctional?: boolean  // default: false
   optimizeSSR?: boolean   // default: false
 
-  // Whether prettify compiled render function or not (development only)
-  // default: true
+  // 是否美化编译后的渲染函数 (只在开发环境下有效)
+  // 默认值：true
   prettify?: boolean
 }
 
@@ -111,20 +112,20 @@ interface AssetURLOptions {
 }
 ```
 
-#### Handling the Output
+#### 处理输出
 
-The resulting JavaScript code will look like this:
+处理得到的 JavaScript 代码形如；
 
 ``` js
 var render = function (h) { /* ... */}
 var staticRenderFns = [function (h) { /* ... */}, function (h) { /* ... */}]
 ```
 
-It **does NOT** assume any module system. It is your responsibility to handle the exports, if needed.
+它**不会**假定任何模块系统。你要在必要的时候负责处理导出。
 
 ### compileStyle(StyleCompileOptions)
 
-Take input raw CSS and applies scoped CSS transform. It does NOT handle pre-processors. If the component doesn't use scoped CSS then this step can be skipped.
+将输入的原始 CSS 进行 scoped CSS 转换。它不会处理预处理器。如果组件没有使用 scoped CSS 那么这一步会被跳过。
 
 ``` ts
 interface StyleCompileOptions {
@@ -143,11 +144,11 @@ interface StyleCompileOptions {
 interface StyleCompileResults {
   code: string
   map: any | void
-  rawResult: LazyResult | void // raw lazy result from PostCSS
+  rawResult: LazyResult | void // 来自 PostCSS 的延时原始结果
   errors: string[]
 }
 ```
 
 ### compileStyleAsync(StyleCompileOptions)
 
-Same as `compileStyle(StyleCompileOptions)` but it returns a Promise resolving to `StyleCompileResults`. It can be used with async postcss plugins.
+和 `compileStyle(StyleCompileOptions)` 相同，但是返回一个解析 `StyleCompileResults` 的 Promise 对象。可用于异步的 PostCSS 插件。

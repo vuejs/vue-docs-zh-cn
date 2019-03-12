@@ -6,14 +6,13 @@
 
 这个包包含了底层的实用工具，对于将 Vue 单文件组件编译为 JavaScript 的打包器或模块系统来说，为其撰写插件或转换规则是用得到这些实用工具的。
 
-该 API 的外表是刻意最小化的，目的是在尽可能灵活的同时尽可能多地被重用。
+表层 API 设计被刻意最小化，目的是在尽可能灵活的同时保持可复用。
 
 ## 为什么 `vue-template-compiler` 不是一个 `peerDependency`？
 
-Since this package is more often used as a low-level utility, it is usually a transitive dependency in an actual Vue project. It is therefore the responsibility of the higher-level package (e.g. `vue-loader`) to inject `vue-template-compiler` via options when calling the `parse` and `compileTemplate` methods.
 因为这个包更多地作为一个底层实用工具被使用，在实际的 Vue 工程中常常是一个可传递的依赖。这也是顶层包 (例如 `vue-loader`) 在调用 `parse` 和 `compileTemplate` 方法时将 `vue-template-compiler` 通过选项注入的原因。
 
-没有将其列为同级依赖也使得工具作者可以将 `vue-template-compiler` 换为一个非默认的模板编译器，而不需要仅仅为了填补同级依赖而引入它。
+没有将其列为同级依赖 (peer dependency) 也使得工具作者可以将 `vue-template-compiler` 换为一个非默认的模板编译器，而不需要仅仅为了填补同级依赖而引入它。
 
 ## API
 
@@ -144,7 +143,7 @@ interface StyleCompileOptions {
 interface StyleCompileResults {
   code: string
   map: any | void
-  rawResult: LazyResult | void // 来自 PostCSS 的延时原始结果
+  rawResult: LazyResult | void // 来自 PostCSS 的懒处理原始结果
   errors: string[]
 }
 ```

@@ -60,8 +60,9 @@ module.exports = {
 module.exports = {
   lintOnSave: process.env.NODE_ENV !== 'production'
 }
+```
 
-```## 在已创建的项目中安装
+## 在已创建的项目中安装
 
 ``` sh
 vue add @vue/eslint

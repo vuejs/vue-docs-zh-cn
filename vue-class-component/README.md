@@ -204,7 +204,7 @@ new Vue({
 
 ### Class 属性的注意事项
 
-vue-class-component 会通过在底层将原本构造函数实例化来收集 class 的属性作为 Vue 示例数据。当我们可以像原生 class 一样定义实例数据时，我们有时需要知道它是如何工作的。
+vue-class-component 会通过在底层将原本构造函数实例化来收集 class 的属性作为 Vue 实例数据。当我们可以像原生 class 一样定义实例数据时，我们有时需要知道它是如何工作的。
 
 #### 属性里的 `this` 的值
 
